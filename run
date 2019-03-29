@@ -73,10 +73,10 @@ sudo rm -fr ../.telegram-cli
 done
 else
 
-if ! screen -list | grep -q "boss"; then
-screen -S boss ./run R
+if ! screen -list | grep -q "max"; then
+screen -S max ./run R
 fi
-screen -X -S boss kill
-screen -S boss ./run R
+screen -X -S max kill
+screen -S max ./run R
 fi
 
