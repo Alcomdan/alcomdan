@@ -477,7 +477,7 @@ end
 
 if MsgText[2] and MsgText[2]:match('^%d+$') then
 if not msg.Director then return "📛*¦* هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n🚶" end
-if 100 < tonumber(MsgText[2]) then return "📛*¦* حدود المسح ,  يجب ان تكون ما بين  *[2-100]*" end
+if 500 < tonumber(MsgText[2]) then return "📛*¦* حدود المسح ,  يجب ان تكون ما بين  *[2-100]*" end
 local DelMsg = MsgText[2] + 1
 GetHistory(msg.chat_id_,DelMsg,function(arg,data)
 All_Msgs = {}
@@ -3363,7 +3363,7 @@ elseif Text== "عاش"  then return sendMsg(msg.chat_id_,msg.id_,"الحلو �
 elseif Text== "مات"  then return sendMsg(msg.chat_id_,msg.id_,"أبو الحمامات 🕊🕊")
 elseif Text== "ورده" or Text== "وردة" then return sendMsg(msg.chat_id_,msg.id_,"أنت/ي  عطرها 🌹🌸")
 elseif Text== "شسمك"  then return sendMsg(msg.chat_id_,msg.id_,"مكتوب فوك 🌚🌿")
-elseif Text== "فديت" or Text=="فطيت" then return sendMsg(msg.chat_id_,msg.id_,"[فداك/ج كلبي ودكاته 🙈💗](https://t.me/LSGHKRANL)")
+elseif Text== "فديت" or Text=="فطيت" then return sendMsg(msg.chat_id_,msg.id_,"فداك/ج كلبي ودكاته 🙈💗")
 elseif Text== "واو"  then return sendMsg(msg.chat_id_,msg.id_,"قميل 🌝🌿")
 elseif Text== "زاحفه" or Text== "زاحفة" then return  sendMsg(msg.chat_id_,msg.id_,"لو زاحفتلك جان ماكلت زاحفه 🌝🌸")
 elseif Text== "حبيبي" or Text=="حبي" then return  sendMsg(msg.chat_id_,msg.id_,"بعد روحي 😍❤️ تفضل")
@@ -3377,7 +3377,7 @@ return sendMsg(msg.chat_id_,msg.id_,"طرطاا طرطاا طرطاا 😂👌")
 elseif Text== "موجود" then return sendMsg(msg.chat_id_,msg.id_,"تفضل عزيزي 🌝🌸")
 elseif Text== "اكلك" then return sendMsg(msg.chat_id_,msg.id_,".كول حياتي 😚🌿")
 elseif Text== "فدوه" or Text=="فدوة" or Text=="فطوه" or Text=="فطوة" then  
-return sendMsg(msg.chat_id_,msg.id_,"[لكلبك/ج 😍❤️](https://t.me/LSGHKRANL)")
+return sendMsg(msg.chat_id_,msg.id_,"لكلبك/ج 😍❤️")
 elseif Text== "دي"  or Text== "ديي" then return sendMsg(msg.chat_id_,msg.id_,"امشيك بيها 😉👋🏻")
 elseif Text== "اشكرك" then return sendMsg(msg.chat_id_,msg.id_,"بخدمتك/ج حبي ❤")
 elseif Text== "😉"  then return sendMsg(msg.chat_id_,msg.id_,"😻🙈")
@@ -3431,7 +3431,7 @@ return sendMsg(msg.chat_id_,msg.id_,[[
 📛¦ لتتندم فڪر قبل ڪلشي  
 👨🏽‍⚖️¦ بالتـوفيـق عزيزي ...
 🚸¦ [اضغط هنا لـحـذف الـحـسـاب](https://telegram.org/deactivate)
-🎁¦ [اضغط هنا لديك مفاجئه](https://t.me/LSGHKRANL)
+🎁¦ [اضغط هنا لديك مفاجئه](https://t.me/hlh_313)
 🎁¦ [اضغط هنا لديك مفاجئه اخرى](https://t.me/llh313)
 ]] )
 --=====================================
