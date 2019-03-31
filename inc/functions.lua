@@ -1186,17 +1186,17 @@ redis:set(boss..'linkGroup'..msg.chat_id_,Gp_Link)
 if not we_sudo(msg) then
 GetUserID(msg.sender_user_id_,function(arg,datai)
 if datai.username_ then 
-USERNAME_T = '🎟*¦* الـمعرف  •⊱ @['..datai.username_..'] ⊰•\n'
+USERNAME_T = '🎟*┇*الـمعرف ❪ @['..datai.username_..'] ❫\n'
 else 
 USERNAME_T = ''
 end
-return send_msg(SUDO_ID,'👮🏽*¦* قام شخص بتفعيل البوت ...\n\nــــــــــــــــــــــــــــــــــــــــــ\n📑¦ معلومات المجموعه\n'
-..'🗯¦ الاسم •⊱ ['..NameGroup..']('..Gp_Link..') ⊰• \n'
-..'📛¦ الايدي •⊱`'..msg.chat_id_..'`⊰•\n'
-..'🙋🏻‍♂¦ ألاعـضـاء •⊱{ *'..Groupcount..'* }⊰• \nــــــــــــــــــــــــــــــــــــــــــ\n⚖️¦ معلومات الشخص \n'
-..'👨🏽‍💻*¦* الاسـم •⊱{ ['..FlterName(datai.first_name_..' '..(datai.last_name_ or ""),23)..'](tg://user?id='..msg.sender_user_id_..') }⊰•\n\n'
-..USERNAME_T..'📆¦ التاريخ •⊱* '..os.date("%Y/%m/%d")
-..' *⊰•\n⏱¦ الساعه •⊱* '..os.date("%I:%M%p")..' *⊰•')
+return send_msg(SUDO_ID,'👮🏽*┇*قام شخص بتفعيل البوت ...\n\nــــــــــــــــــــــــــــــــــــــــــ\n📑┇معلومات المجموعه\n'
+..'🗯┇الاسم ❪ ['..NameGroup..']('..Gp_Link..') ❫\n'
+..'📛┇الايدي ❪ `'..msg.chat_id_..'` ❫\n'
+..'🙋🏻‍♂┇ألاعـضـاء ❪ *'..Groupcount..'* ❫ \nــــــــــــــــــــــــــــــــــــــــــ\n⚖️┇معلومات الشخص \n'
+..'👨🏽‍💻*┇*الاسـم ❪ ['..FlterName(datai.first_name_..' '..(datai.last_name_ or ""),23)..'](tg://user?id='..msg.sender_user_id_..') ❫\n\n'
+..USERNAME_T..'📆┇التاريخ ❪* '..os.date("%Y/%m/%d")
+..' *❫\n⏱┇الساعه ❪* '..os.date("%I:%M%p")..' *❫')
 end,nil) 
 end
 end)
@@ -1213,6 +1213,13 @@ if not msg.SudoUser then return '🛠*¦* أنـت لـسـت الـمـطـور
 if not redis:get(boss..'group:add'..msg.chat_id_) then return '🛠*¦* المجموعه بالتأكيد ✓️ تم تعطيلها' end  
 rem_data_group(msg.chat_id_)
 return '📛*¦* تـم تـعـطـيـل الـمـجـمـوعـه ⚠️'
+end
+
+function modrem(msg)
+if not msg.SudoUser then return '🛠*┇*أنـت لـسـت الـمـطـور ⚙️'end
+if not redis:get(boss..'group:add'..msg.chat_id_) then return '🛠*┇*المجموعه بالتأكيد ✓️ تم تعطيلها' end  
+rem_data_group(msg.chat_id_)
+return '📛*┇*تـم تـعـطـيـل الـمـجـمـوعـه ⚠️'
 end
 
 function action_by_reply(arg,data)  --===  معلومات الرد 
@@ -1235,126 +1242,126 @@ USERCAR = utf8.len(USERNAME)
 
 if cmd =="tqeed" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد الادمن\n🛠") 
 end
 GetChatMember(ChatID,UserID,function(arg,data)
 if data.status_.ID == "ChatMemberStatusMember" then
 Restrict(ChatID,UserID,1)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇ الايدي » ❪ '..UserID..' ❫\n🙍🏻‍♂┇ تم تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
 else
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنني تقييد المشرف\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنني تقييد المشرف\n🛠") 
 end
 end)
 end
 
 if cmd =="fktqeed" then
 if UserID == our_id then  
-return sendMsg(ChatID,MsgID,"👤*¦* البوت ليس مقييد  \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* البوت ليس مقييد  \n📛") 
 end
 Restrict(ChatID,UserID,2)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم فگ تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇ الايدي » ❪ '..UserID..' ❫\n💯┇ تم فگ تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
 end
 
 if cmd == "setmnsha" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID  == "UserTypeBot" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 elseif data.type_.ID == "chatTypeChannel" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد منشىء  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد منشىء  \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID,'username',Resolv)
 redis:sadd(boss..':MONSHA_BOT:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح منشىء في البوت \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح منشىء في البوت \n✓️',12,USERCAR) 
 end
 
 if cmd == "remmnsha" then
 if not redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس منشىء \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس منشىء \n✓️',12,USERCAR) 
 end
 redis:srem(boss..':MONSHA_BOT:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من المنشىء \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من المنشىء \n✓️',12,USERCAR) 
 end
 
 if cmd == "setwhitelist" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "UserTypeBot" then
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 elseif data.type_.ID == "ChatTypeChannel" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد عضو مميز \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'whitelist:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح عضو مميز \n✓️',12,USERCAR) 
 end
 
 if cmd == "remwhitelist" then
 if not redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس عضو مميز \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'whitelist:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت تنزيله من عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت تنزيله من عضو مميز \n✓️',12,USERCAR) 
 end
 
 if cmd == "setowner" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "UserTypeBot" then
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 end
 if redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد مدير \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'owners:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح مدير \n✓️',12,USERCAR) 
 end
 
 if cmd == "promote" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "UserTypeBot" then
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 end
 if redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ادمن \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'admins:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇ العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح ادمن \n✓️',12,USERCAR) 
 end
 
 if cmd == "remowner" then
 if not redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس مدير \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'owners:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من المدير  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من المدير  \n✓️',12,USERCAR) 
 end
 
 if cmd == "demote" then
 if not redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس ادمن \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'admins:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من الادمنيه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من الادمنيه \n✓️',12,USERCAR) 
 end
 
 if cmd == "iduser" then
@@ -1373,32 +1380,32 @@ end
 if cmd == "active" then
 local maseegs = redis:get(boss..'msgs:'..UserID..':'..ChatID) or 1
 local namei = FlterName(data.first_name_..' '..(data.last_name_ or ""))
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » '..namei..' \n📮¦ رسائلك » ❪ '..maseegs..' ❫ رسالةة\n🔖¦ التفاعل »  ❪ '..Get_Ttl(maseegs)..' ❫\n🙇🏽',12,utf8.len(namei)) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » '..namei..' \n📮┇رسائلك » ❪ '..maseegs..' ❫ رسالةة\n🔖┇التفاعل »  ❪ '..Get_Ttl(maseegs)..' ❫\n🙇🏽',12,utf8.len(namei)) 
 end
 
 if cmd == "ban" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر الادمن\n🛠") 
 end
 kick_user(UserID,ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 else
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'banned:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم حظره  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم حظره  \n✓️',12,USERCAR) 
 end
 end)
 
@@ -1406,9 +1413,9 @@ end
 
 if cmd == "unban" then
 if not redis:sismember(boss..'banned:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد الغاء حظره  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد الغاء حظره  \n✓️',12,USERCAR) 
 else
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء حظره \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء حظره \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'banned:'..ChatID,UserID)
 StatusLeft(ChatID,UserID)
@@ -1416,81 +1423,81 @@ end
 
 if cmd == "silent" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم الادمن\n🛠") 
 end
 if redis:sismember(boss..'is_silent_users:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد كتمه  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد كتمه  \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'is_silent_users:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم كتمه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم كتمه \n✓️',12,USERCAR) 
 end
 
 if cmd == "unsilent" then
 if not redis:sismember(boss..'is_silent_users:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتاكيد الغاء كتمه  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتاكيد الغاء كتمه  \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'is_silent_users:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء كتمه  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء كتمه  \n✓️',12,USERCAR) 
 end
 
 if cmd == "banall" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠")
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠")
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 end
-if GeneralBanned(UserID) then return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..USERNAME..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦*  تم بالتأكيد حظره عام \n✓️') end
+if GeneralBanned(UserID) then return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..USERNAME..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم بالتأكيد حظره عام \n✓️') end
 redis:hset(boss..'username:'..UserID, 'username',Resolv)
 redis:sadd(boss..'gban_users',UserID)
 kick_user(UserID, ChatID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم حظره عام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم حظره عام \n✓️',12,USERCAR) 
 end
 
 if cmd == "unbanall" then
 if not GeneralBanned(UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد الغاء حظره العام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد الغاء حظره العام \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'gban_users',UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء حظره العام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء حظره العام \n✓️',12,USERCAR) 
 end
 
 if cmd == "kick" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد الادمن\n🛠") 
 end
 kick_user(UserID, ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'banned:'..ChatID,UserID)
 StatusLeft(ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم طرد العضو \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم طرد العضو \n✓️',12,USERCAR) 
 end)
 
 end
@@ -1521,34 +1528,34 @@ Getrtb = 'مميز'
 else
 Getrtb = 'عضو' 
 end
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n\nـ⠀❪ رتـبـه الشخص ❫\n\n🤖¦ في البوت » ❪ '..Getrtb..' ❫\n💬¦ في المجموعه » ❪ '..SudoGroups..' ❫\n✓',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n\nـ⠀❪ رتـبـه الشخص ❫\n\n🤖┇في البوت » ❪ '..Getrtb..' ❫\n💬┇في المجموعه » ❪ '..SudoGroups..' ❫\n✓',12,USERCAR) 
 end)
 end
 
 if cmd == "up_sudo" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "UserTypeBot" then
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 end
 if redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد مطور \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد مطور \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..':SUDO_BOT:',UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم ترقيته ليصبح مطور \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم ترقيته ليصبح مطور \n✓️',12,USERCAR) 
 end
 
 if cmd == "dn_sudo" then
 if not redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس مطور \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس مطور \n✓️',12,USERCAR) 
 end
 redis:srem(boss..':SUDO_BOT:',UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من المطورين \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من المطورين \n✓️',12,USERCAR) 
 end  -- End Cmd 
 end,nil)
 else
-return sendMsg(ChatID,MsgID,"📛*¦* عذرا هذا العضو ليس موجود ضمن المجموعات \n❕")
+return sendMsg(ChatID,MsgID,"📛*┇* عذرا هذا العضو ليس موجود ضمن المجموعات \n❕")
 end 
 end
 
@@ -1564,30 +1571,30 @@ local UserName = '@'..arg.msg.text:match('@[%a%d_]+'):gsub('@',''):gsub('_',[[\_
 print(UserName)
 if cmd =="tqeed" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد الادمن\n🛠") 
 end
 GetChatMember(ChatID,our_id,function(arg,data)
 if data.status_.ID == "ChatMemberStatusEditor" then 
 GetChatMember(ChatID,UserID,function(arg,data)
 if data.status_.ID == "ChatMemberStatusMember" then 
 Restrict(ChatID,UserID,1)  
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم تقييد آلعضـو بنجآح \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم تقييد آلعضـو بنجآح \n✓️') 
 else
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني تقييد العضو .\n🎟* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇*لا يمكنني تقييد العضو .\n🎟*┇*لانه مشرف في المجموعه \n ❕')    
 end
 end)
 else
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني تقييد العضو .\n🎟* لانني لست مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇*لا يمكنني تقييد العضو .\n🎟*┇*لانني لست مشرف في المجموعه \n ❕')    
 end
 end)
 
@@ -1595,15 +1602,15 @@ end
 
 if cmd =="fktqeed" then
 if UserID == our_id then  
-return sendMsg(ChatID,MsgID,"📛*¦* البوت ليس مقييد \n❗️ ") 
+return sendMsg(ChatID,MsgID,"📛*┇*البوت ليس مقييد \n❗️ ") 
 end
 GetUserID(UserID,function(arg,data)
 GetChatMember(ChatID,our_id,function(arg,data)
 if data.status_.ID == "ChatMemberStatusEditor" then 
 Restrict(ChatID,UserID,2)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم فك تقييد آلعضـو بنجآح \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم فك تقييد آلعضـو بنجآح \n✓️') 
 else
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني قك تقييد العضو .\n🎟* لانني لست مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇*لا يمكنني قك تقييد العضو .\n🎟*┇*لانني لست مشرف في المجموعه \n ❕')    
 end
 end)
 end,nil)
@@ -1611,92 +1618,92 @@ end
 
 if cmd == "setmnsha" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "UserTypeBot" then
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع بوت في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع بوت في البوت \n📛") 
 elseif data.type_.ID == "ChatTypeChannel" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد منشىء في البوت \n✓️') 
+return sendMsg(ChatID,MsgID,'👤*┇* العضو » ❪ '..UserName..' ❫\n🎟*┇*لايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد منشىء في البوت \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..':MONSHA_BOT:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت ترقيته ليصبح منشىء في البوت \n✓️')
+return sendMsg(ChatID,MsgID,'👤*┇* العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح منشىء في البوت \n✓️')
 end
 
 if cmd == "remmnsha" then
 if not redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ليس منشىء \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد ليس منشىء \n✓️') 
 end
 redis:srem(boss..':MONSHA_BOT:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت تنزيله من المنشىء \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت تنزيله من المنشىء \n✓️') 
 end
 
 if cmd == "setwhitelist" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "ChannelChatInfo" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد من عضو مميز \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد من عضو مميز \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'whitelist:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت ترقيته ليصبح ضمن عضو مميز \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح ضمن عضو مميز \n✓️')
 end
 
 if cmd == "remwhitelist" then
 if not redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ليس من عضو مميز \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد ليس من عضو مميز \n✓️') 
 end
 redis:srem(boss..'whitelist:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت تنزيله من عضو مميز \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت تنزيله من عضو مميز \n✓️')
 end
 
 if cmd == "setowner" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "ChannelChatInfo" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n??*¦* انه بالتأكيد مدير \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد مدير \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'owners:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت ترقيته ليصبح مدير \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح مدير \n✓️')
 end
 
 if cmd == "promote" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني رفع نفسي \n📛") 
 elseif data.type_.ID == "ChannelChatInfo" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن رفع قناة في البوت \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ادمن \n✓️') 
+return sendMsg(ChatID,MsgID,'👤*┇* العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد ادمن \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'admins:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تمت ترقيته ليصبح ادمن \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح ادمن \n✓️')
 end
 
 if cmd == "remowner" then
 if not redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ليس مدير \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد ليس مدير \n✓️') 
 end
 redis:srem(boss..'owners:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم تنزيله من الاداره \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم تنزيله من الاداره \n✓️')
 end
 
 if cmd == "demote" then
 if not redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ليس ادمن \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد ليس ادمن \n✓️') 
 end
 redis:srem(boss..'admins:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم تنزيله من الادمنيه \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم تنزيله من الادمنيه \n✓️')
 end
 
 if cmd == "iduser" then
@@ -1715,48 +1722,48 @@ end
 if cmd == "active" then
 local maseegs = redis:get(boss..'msgs:'..UserID..':'..ChatID) or 1
 local namei = FlterName(data.title_)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..namei..' ❫\n📮¦ رسائلك » ❪ '..maseegs..' ❫ رسالةة\n🔖¦ التفاعل »  ❪ '..Get_Ttl(maseegs)..' ❫\n🙇🏽',12,utf8.len(namei)) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..namei..' ❫\n📮┇رسائلك » ❪ '..maseegs..' ❫ رسالةة\n🔖┇التفاعل »  ❪ '..Get_Ttl(maseegs)..' ❫\n🙇🏽',12,utf8.len(namei)) 
 end 
 
 if cmd == "ban" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر الادمن\n🛠") 
 end
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكنني حظر نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكنني حظر نفسي \n📛") 
 elseif data.type_.ID == "ChannelChatInfo" then 
-return sendMsg(ChatID,MsgID,"👤*¦* عذرا لا يمكن حظر قناة \n📛") 
+return sendMsg(ChatID,MsgID,"👤*┇* عذرا لا يمكن حظر قناة \n📛") 
 end
 if redis:sismember(boss..'banned:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم بالتأكيد حظره \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم بالتأكيد حظره \n✓️') 
 end
 kick_user(UserID, ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني حظر العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني حظر العضو .\n🎟*┇*ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'banned:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم حظره \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم حظره \n✓️')
 end)
 end  
 
 if cmd == "unban" then
 if not redis:sismember(boss..'banned:'..ChatID,UserID) then 
-sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم بالتأكيد الغاء حظره \n✓️') 
+sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم بالتأكيد الغاء حظره \n✓️') 
 else
-sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم الغاء حظره \n✓️')
+sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم الغاء حظره \n✓️')
 end
 redis:srem(boss..'banned:'..ChatID,UserID)
 StatusLeft(ChatID, UserID)
@@ -1764,106 +1771,106 @@ end
 
 if cmd == "silent" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم الادمن\n🛠") 
 end
 if redis:sismember(boss..'is_silent_users:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪`'..UserID..'` ❫\n🛠*¦* تم بالتأكيد كتمه \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪`'..UserID..'` ❫\n💯*┇*تم بالتأكيد كتمه \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'is_silent_users:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم كتمه \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم كتمه \n✓️')
 end
 
 if cmd == "unsilent" then
 if not redis:sismember(boss..'is_silent_users:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم بالتأكيد الغاء كتمه \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*م بالتأكيد الغاء كتمه \n✓️') 
 end
 redis:srem(boss..'is_silent_users:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم الغاء كتمه \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم الغاء كتمه \n✓️')
 end
 
 if cmd == "banall" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠")
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠")
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 end
 if GeneralBanned(UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم بالتأكيد حظره عام \n✓️') 
+return sendMsg(ChatID,MsgID,'👤*┇* العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم بالتأكيد حظره عام \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'gban_users',UserID)
 kick_user(UserID, ChatID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم حظره عام \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم حظره عام \n✓️')
 end
 
 if cmd == "unbanall" then
 if not GeneralBanned(UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم بالتأكيد الغاء حظره العام \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*م بالتأكيد الغاء حظره العام \n✓️') 
 end
 redis:srem(boss..'gban_users',UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦*  تم الغاء حظره العام \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم الغاء حظره العام \n✓️')
 end
 
 if cmd == "kick" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد الادمن\n🛠") 
 end
 kick_user(UserID,ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني طرد العضو .\n🎟*┇*لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني طرد العضو .\n🎟*┇*ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..'banned:'..ChatID,UserID)
 StatusLeft(ChatID,UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم طرد العضو \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم طرد العضو \n✓️')
 end)
  
 end
 
 if cmd == "up_sudo" then
 if redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد مطور \n✓') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد مطور \n✓') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..':SUDO_BOT:',UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم ترقيته ليصبح مطور \n✓')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم ترقيته ليصبح مطور \n✓')
 end
 
 if cmd == "dn_sudo" then
 if not redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* انه بالتأكيد ليس مطور \n✓')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*نه بالتأكيد ليس مطور \n✓')
 end
 redis:srem(boss..':SUDO_BOT:',UserID)
-return sendMsg(ChatID,MsgID,'👤*¦* العضو » ❪ '..UserName..' ❫\n🎫*¦* الايدي » ❪ `'..UserID..'` ❫\n🛠*¦* تم تنزيله من المطورين \n✓') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎫*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تم تنزيله من المطورين \n✓') 
 end
 
 else
-return sendMsg(ChatID,MsgID,"📛*¦* لآ يوجد عضـو بهہ‌‏ذآ آلمـعرف \n❕")
+return sendMsg(ChatID,MsgID,"📛*┇* لآ يوجد عضـو بهہ‌‏ذآ آلمـعرف \n❕")
 end 
 
 end
@@ -1874,7 +1881,7 @@ local cmd = arg.cmd
 local ChatID = arg.msg.chat_id_
 local MsgID = arg.msg.id_
 if not data.id_ then 
-sendMsg(ChatID,MsgID,"📛*¦* العضو لا يوجد\n❕") 
+sendMsg(ChatID,MsgID,"📛*┇* العضو لا يوجد\n❕") 
 return false
 end
 local UserID = data.id_
@@ -1890,87 +1897,87 @@ USERCAR = utf8.len(USERNAME)
 
 if cmd == "tqeed" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك تقييد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك تقييد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد الادمن\n🛠") 
 end
 Restrict(ChatID,UserID,1)
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..':tqeed:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
 end 
 if cmd =="fktqeed" then
 Restrict(ChatID,UserID,2)
 redis:srem(boss..':tqeed:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم فگ تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم فگ تقييد آلعضـو بنجآح \n✓️',12,USERCAR) 
 end
 if cmd == "setwhitelist" then
 if redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد من عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد من عضو مميز \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'whitelist:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح ضمن عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح ضمن عضو مميز \n✓️',12,USERCAR) 
 end
 if cmd == "setmnsha" then
 if redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد منشىء \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد منشىء \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..':MONSHA_BOT:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح منشىء في البوت \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح منشىء في البوت \n✓️',12,USERCAR) 
 end
 if cmd == "remmnsha" then
 if not redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس منشىء \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس منشىء \n✓️',12,USERCAR) 
 end
 redis:srem(boss..':MONSHA_BOT:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من المنشىء \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من المنشىء \n✓️',12,USERCAR) 
 end
 if cmd == "remwhitelist" then
 if not redis:sismember(boss..'whitelist:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس من عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس من عضو مميز \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'whitelist:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت تنزيله من عضو مميز \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت تنزيله من عضو مميز \n✓️',12,USERCAR) 
 end
 if cmd == "setowner" then
 if redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد مدير \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'owners:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح مدير \n✓️',12,USERCAR) 
 end
 if cmd == "promote" then
 if redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ادمن \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'admins:'..ChatID,UserID) 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تمت ترقيته ليصبح ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تمت ترقيته ليصبح ادمن \n✓️',12,USERCAR) 
 end
 if cmd == "remowner" then
 if not redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس مدير \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس مدير \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'owners:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من الاداره \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من الاداره \n✓️',12,USERCAR) 
 end
 if cmd == "demote" then
 if not redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد ليس ادمن \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇انه بالتأكيد ليس ادمن \n✓️',12,USERCAR) 
 end
 redis:srem(boss..'admins:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من الادمنيه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من الادمنيه \n✓️',12,USERCAR) 
 end
 if cmd == "whois" then
 GetChatMember(ChatID,UserID,function(arg,data1)
@@ -1986,74 +1993,74 @@ end
 
 if cmd == "up_sudo" then
 if redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ انه بالتأكيد مطور \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇نه بالتأكيد مطور \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..':SUDO_BOT:',UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم ترقيته ليصبح مطور \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍??‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم ترقيته ليصبح مطور \n✓️',12,USERCAR) 
 end
 
 if cmd == "dn_sudo" then
-if not redis:sismember(boss..':SUDO_BOT:',UserID) then return sendMsg(ChatID,MsgID,'👤*¦* العضو » '..USERNAME..' \n🎫*¦* الايدي » (`'..UserID..'`)\n🛠*¦* انه بالتأكيد ليس مطور \n✓') end
+if not redis:sismember(boss..':SUDO_BOT:',UserID) then return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » '..USERNAME..' \n🎫*┇* الايدي » (`'..UserID..'`)\n💯*┇*انه بالتأكيد ليس مطور \n✓') end
 redis:srem(boss..':SUDO_BOT:',UserID) 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم تنزيله من المطورين \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم تنزيله من المطورين \n✓️',12,USERCAR) 
 end
 
 if cmd == "ban" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر الادمن\n🛠") 
 end
 if Check_Banned(ChatID,UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد حظره \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد حظره \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'banned:'..ChatID,UserID)
 kick_user(UserID, ChatID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم حظره  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم حظره  \n✓️',12,USERCAR) 
 end
 
 if cmd == "kick" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك طرد الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك طرد الادمن\n🛠") 
 end
 kick_user(UserID, ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني طرد العضو .\n🎟*┇* لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'📛*┇* لا يمكنني طرد العضو .\n🎟*┇* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'banned:'..ChatID,UserID)
 StatusLeft(ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم طرد العضو \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم طرد العضو \n✓️',12,USERCAR) 
 end)
 end
 
 if cmd == "uban" then
 if not Check_Banned(ChatID,UserID) then 
- SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد الغاء حظره \n✓️',12,USERCAR) 
+ SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد الغاء حظره \n✓️',12,USERCAR) 
 else
- SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء حظره \n✓️',12,USERCAR) 
+ SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء حظره \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:srem(boss..'banned:'..ChatID,UserID)
@@ -2063,63 +2070,63 @@ end
 
 if cmd == "ktm" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور الاساسي\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور الاساسي\n🛠") 
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المطور\n🛠") 
 elseif redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المنشئ\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المنشئ\n🛠") 
 elseif redis:sismember(boss..'owners:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المدير\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المدير\n🛠") 
 elseif redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم الادمن\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم الادمن\n🛠") 
 end
 if redis:sismember(boss..'admins:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك كتم المدراء او الادمنيه\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك كتم المدراء او الادمنيه\n🛠") 
 end
 if MuteUser(ChatID, UserID) then
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد كتمه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد كتمه \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'is_silent_users:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم كتمه  \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم كتمه  \n✓️',12,USERCAR) 
 end
 
 if cmd == "unktm" then
 if not MuteUser(ChatID, UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد الغاء كتمه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد الغاء كتمه \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:srem(boss..'is_silent_users:'..ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء كتمه \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء كتمه \n✓️',12,USERCAR) 
 end
 
 if cmd == "bandall" then
 if UserID == our_id then   
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر البوت\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر البوت\n🛠") 
 elseif UserID == SUDO_ID then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور الاساسي\n🛠")
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور الاساسي\n🛠")
 elseif redis:sismember(boss..':SUDO_BOT:',UserID) then 
-return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
+return sendMsg(ChatID,MsgID,"👤*┇* لا يمكنك حظر المطور\n🛠") 
 end
 if GeneralBanned(UserID) then 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد حظره عام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد حظره عام \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:sadd(boss..'gban_users',UserID)
 kick_user(UserID,ChatID) 
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم حظره عام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم حظره عام \n✓️',12,USERCAR) 
 end
 
 if cmd == "unbandall" then
 if not GeneralBanned(UserID) then
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم بالتأكيد الغاء حظره العام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم بالتأكيد الغاء حظره العام \n✓️',12,USERCAR) 
 end
 redis:hset(boss..'username:'..UserID, 'username', Resolv)
 redis:srem(boss..'gban_users',UserID)
 StatusLeft(ChatID,UserID)
-return SendMention(ChatID,UserID,MsgID,'👤¦ العضو » ❪ '..USERNAME..' ❫\n🎫¦ الايدي » ❪ '..UserID..' ❫\n🛠¦ تم الغاء حظره العام \n✓️',12,USERCAR) 
+return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..USERNAME..' ❫\n🎫┇الايدي » ❪ '..UserID..' ❫\n💯┇تم الغاء حظره العام \n✓️',12,USERCAR) 
 end
 
 end
