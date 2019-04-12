@@ -30,7 +30,12 @@ if redis:get(boss..'lock_id'..msg.chat_id_) then
 local msgs = redis:get(boss..'msgs:'..msg.sender_user_id_..':'..msg.chat_id_) or 1
 GetUserID(msg.sender_user_id_,function(arg,data)
 if data.username_ then UserNameID = "🎫┇معرفـك ❪ @"..data.username_.." ❫\n" else UserNameID = "" end
-local zz = (redis:get(boss..':User_Points:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
+local points = redis:get(boss..':User_Points:'..msg.chat_id_..msg.sender_user_id_)
+if points and points ~= "0" then
+nko = points
+else
+nko = '0'
+end
 local rfih = (redis:get(boss..':edited:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
 local NumGha = (redis:get(boss..':adduser:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
 local Namei = FlterName(data.first_name_..' '..(data.last_name_ or ""),20)
@@ -67,7 +72,7 @@ sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,
 ..'🎲┇تفاعلك ❪ '..Get_Ttl(msgs)..' ❫\n'
 ..'💬┇رسائلك ❪ '..msgs..' ❫\n'
 ..'🚸┇سحكاتـك ❪ '..rfih..' ❫\n'
-..'💎┇مجوهراتك ❪ '..zz..' ❫\n'
+..'💎┇مجوهراتك ❪ '..nko..' ❫\n'
 ,dl_cb,nil)
 else
 sendMsg(msg.chat_id_,msg.id_,
@@ -3378,7 +3383,7 @@ elseif Text== "رفع مرتي"  then return sendMsg(msg.chat_id_,msg.id_,"🙋�
 elseif Text== "تنزيل مرتي"  then return sendMsg(msg.chat_id_,msg.id_,"🙋🏻‍♂¦ اهــلا عزيزي\n🎫¦ تم تنزيل الجكمه مرتك بنجاح✔️\nالآن انتم مفترقان☹️💔\n✓️")
 elseif Text== "زواج"  then return sendMsg(msg.chat_id_,msg.id_,"🙋🏻‍♂¦ اهــلا عزيزي\n🎫¦ تم زواجكم الاثنين بنجاح✔️\n🛠¦ الآن يمكنكم أخذ راحتكم🤤😉\n✓️")
 elseif Text== "طلاك"  then return sendMsg(msg.chat_id_,msg.id_,"🙋🏻‍♂¦ اهــلا عزيزي\n🎫¦ تم طلاك العضو بنجاح✔️\n🛠¦ الآن هو مطلك امشي طلعبرا 😹💔\n✓️")
-elseif Text== "اوامر التحشيش"  then return sendMsg(msg.chat_id_,msg.id_,"🙋🏽‍♂¦ مرحبآ عزيزي ،\n💯¦ إليـك اوامر التحشيش كـ التالي\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎\n\n👁‍🗨¦ رفع اثول «» تنزيل اثول ≈ 🤪\n\n✴️¦ رفع جلب «» تنزيل جلب ≈ 🐕\n\n🎫¦ رفع مطي «» تنزيل مطي ≈ 🐴\n\n💥¦ رفع صخل «» تنزيل صخل ≈ 🐐\n\n🐊¦ رفع زاحف «» تتزيل زاحف ≈ 🐍\n\n🕊¦ رفع بكلبي«»تنزيل من كلبي ≈❤️\n\n⚜¦ رفع تاج «» تنزيل تاج ≈ 👑\n\n🎟¦ رفع نبي «» تنزيل نبي ≈ 👳🏻‍♂️\n\n🎶¦ رفع مرتي «» تنزيل مرتي ≈ 💃\n\n🎈¦ طلاك «» زواج ≈ 🤱🏻\n↗️\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎³¹³")
+elseif Text== "اوامر التحشيش"  then return sendMsg(msg.chat_id_,msg.id_,"🙋🏽‍♂¦ مرحبآ عزيزي ،\n💯¦ إليـك اوامر التحشيش كـ التالي\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎\n\n👁‍🗨¦ رفع اثول «» تنزيل اثول ≈ 🤪\n\n✴️¦ رفع جلب «» تنزيل جلب ≈ 🐕\n\n🎫¦ رفع مطي «» تنزيل مطي ≈ 🐴\n\n??¦ رفع صخل «» تنزيل صخل ≈ 🐐\n\n🐊¦ رفع زاحف «» تتزيل زاحف ≈ 🐍\n\n🕊¦ رفع بكلبي«»تنزيل من كلبي ≈❤️\n\n⚜¦ رفع تاج «» تنزيل تاج ≈ 👑\n\n🎟¦ رفع نبي «» تنزيل نبي ≈ 👳🏻‍♂️\n\n🎶¦ رفع مرتي «» تنزيل مرتي ≈ 💃\n\n🎈¦ طلاك «» زواج ≈ 🤱🏻\n↗️\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎³¹³")
 
 elseif Text== "اقرالي دعاء" then 
 return sendMsg(msg.chat_id_,msg.id_,"اللهم عذب المدرسين 😢 منهم الاحياء والاموات 😭🔥 اللهم عذب ام الانكليزي 😭💔 وكهربها بلتيار الرئيسي 😇 اللهم عذب ام الرياضيات وحولها الى غساله بطانيات 🙊 اللهم عذب ام الاسلاميه واجعلها بائعة الشاميه 😭🍃 اللهم عذب ام العربي وحولها الى بائعه البلبي اللهم عذب ام الجغرافيه واجعلها كلدجاجه الحافية اللهم عذب ام التاريخ وزحلقها بقشره من البطيخ وارسلها الى المريخ اللهم عذب ام الاحياء واجعلها كل مومياء اللهم عذب المعاون اقتله بلمدرسه بهاون 😂😂😂")
