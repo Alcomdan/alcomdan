@@ -1,6 +1,14 @@
 --[[
-الالعاب ل سورس ماكس
---]]
+#      ▇▇▇                                       ▇▇▇                     ▄▄▄▄▄                     ▇▇                                                     ▇▇
+#      ▇▇     ▇                             ▇     ▇▇                 ▄▇            ▇▄                          ▇▇                                   ▇▇                
+#      ▇▇        ▇                        ▇       ▇▇               ▄▇                ▇▄                                 ▇▇                 ▇▇
+#      ▇▇          ▇ @hlh313   ▇         ▇▇              ▄▇▄▄▄▄▄▇▄                                          ▇▇ ▇▇
+#      ▇▇             ▇             ▇             ▇▇          ▄▇                            ▇▄                                     ▇▇ ▇▇ ¦ Dev : @hlh313
+#      ▇▇                ▇       ▇                ▇▇        ▄▇ ¦ Dev : @hlh_313  ▇▄                           ▇▇                 ▇▇
+#      ▇▇                   ▇▇                    ▇▇       ▄▇                                    ▇▄                 ▇▇                                  ▇▇
+#      ▇▇                                               ▇▇    ▄▇                                           ▇▄   ▇▇                                                      ▇▇  ¦ Source TH3BOSS BY @hlh_313
+#---------------------------------------------------------------------
+]]
 local function games(msg,MsgText)
 if msg.type ~= "pv" and msg.GroupActive then
 
@@ -42,13 +50,13 @@ if not redis:get(boss..'lock_geams'..msg.chat_id_) and msg.GroupActive then
 
 
 if MsgText[1] == 'محيبس' or MsgText[1] == 'بات' then   
-Num = math.random(1,10)
+Num = math.random(1,6)
 redis:set(boss.."GAMES"..msg.chat_id_,Num) 
 TEST = [[
 *🙋🏻‍♂¦ اهلن عزيزي 
 📮¦ اليك 6 ايدي اختر رقم لأستخراج البات م̷ـــِْن اليد التي تحمل المحيبس
 🎁¦ الفائز يحصل على { 3 } من النقاط
-ء﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 ➀    ➁    ➂    ➃   ➄    ➅ 
 ↓   ↓   ↓    ↓   ↓   ↓ 
 👊‹›👊‹›👊‹›👊‹›👊‹›👊
@@ -119,7 +127,7 @@ end
 if (MsgText[1] == 'اسرع' or MsgText[1] == 'الاسرع') then
 local NUM = math.random(10,1000)
 redis:set(boss..':NUM_SET:'..msg.chat_id_,(NUM * 3))
-local Smiles = {'🍏','🍎','🍐',NUM,NUM,NUM,NUM,NUM,'🍊','🍋','🍌','🍉',NUM,NUM,NUM,NUM,NUM,'🍇','🍓','🍈','🍒',NUM,NUM,NUM,NUM,NUM,'🍑','🍍','🥥','🥝','🍅',NUM,NUM,NUM,NUM,NUM,'🍆','🥑','🥦','🥒',NUM,NUM,NUM,NUM,NUM,'🌶','🌽','🥕','🥔','🍠','🥐','🍞',NUM,NUM,NUM,NUM,NUM,'🥖','🥨','🧀','🥚','🍳','🥞','🥓',NUM,NUM,NUM,NUM,NUM,'🥩','🍗','🍖','🌭','🍔','🍟',NUM,NUM,NUM,NUM,NUM,'🍕','🥪','🥙','🍼','☕️','🍵',NUM,NUM,NUM,NUM,NUM,'🥤','🍶','🍺','🍻',NUM,NUM,NUM,NUM,NUM,'🏀','⚽️','🏈','⚾️','🎾','🏐',NUM,NUM,NUM,NUM,NUM,'🏉','🎱','🏓','🏸','🥅','🎰','🎮',NUM,NUM,NUM,NUM,NUM,'🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹',NUM,NUM,NUM,NUM,NUM,'🎼','🎧','🎤','🎬','🎨','🎭',NUM,NUM,NUM,NUM,NUM,'🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌',NUM,NUM,NUM,NUM,NUM,'🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌',NUM,NUM,NUM,NUM,NUM,'📍','📓','📗','📂','📅','📪','📫','📬',NUM,NUM,NUM,NUM,NUM,'📭','⏰','📺','🎚','☎️',NUM,NUM,NUM,NUM,NUM,'📡'}
+local Smiles = {'🍏','🍎','🍐',NUM,NUM,NUM,NUM,NUM,'🍊','🍋','🍌','🍉',NUM,NUM,NUM,NUM,NUM,'🍇','🍓','🍈','🍒',NUM,NUM,NUM,NUM,NUM,'??','🍍','🥥','🥝','🍅',NUM,NUM,NUM,NUM,NUM,'🍆','🥑','🥦','🥒',NUM,NUM,NUM,NUM,NUM,'🌶','🌽','🥕','🥔','🍠','🥐','🍞',NUM,NUM,NUM,NUM,NUM,'🥖','🥨','🧀','🥚','🍳','🥞','🥓',NUM,NUM,NUM,NUM,NUM,'🥩','🍗','🍖','🌭','🍔','🍟',NUM,NUM,NUM,NUM,NUM,'🍕','🥪','🥙','🍼','☕️','🍵',NUM,NUM,NUM,NUM,NUM,'🥤','🍶','🍺','🍻',NUM,NUM,NUM,NUM,NUM,'🏀','⚽️','🏈','⚾️','🎾','🏐',NUM,NUM,NUM,NUM,NUM,'🏉','🎱','🏓','🏸','🥅','🎰','🎮',NUM,NUM,NUM,NUM,NUM,'🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹',NUM,NUM,NUM,NUM,NUM,'🎼','🎧','🎤','🎬','🎨','🎭',NUM,NUM,NUM,NUM,NUM,'🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌',NUM,NUM,NUM,NUM,NUM,'🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌',NUM,NUM,NUM,NUM,NUM,'📍','📓','📗','📂','📅','📪','📫','📬',NUM,NUM,NUM,NUM,NUM,'📭','⏰','📺','🎚','☎️',NUM,NUM,NUM,NUM,NUM,'📡'}
 Emoji = Smiles[math.random(#Smiles)]
 redis:set(boss..':Set_Smile:'..msg.chat_id_,Emoji)
 if tonumber(redis:get(boss..':Set_Smile:'..msg.chat_id_)) == tonumber(redis:get(boss..':NUM_SET:'..msg.chat_id_)) then
@@ -233,15 +241,15 @@ end
 if MsgText[1] == "الالعاب" or MsgText[1] == "اللعبه" or MsgText[1] == "اللعبة" then
 return [[ 
 🙋🏻‍♂¦ اهلا بك عزيزي 
-🎮¦ اليك قائمه الالعاب
+🎮¦ اليك الالعاب ک تالي ...
 
-🚸 ≈ الاسرع » لعبه تطابق السمايلات
+🚸 ≈ الاسرع » تطابق السمايلات
 📬 ≈ معاني » لعبه معاني السمايلات
 🎭 ≈ ترتيب » لعبه ترتيب الكلمات
 🎮 ≈ روليت » لعبه روليت الشهيره 
 📛 ≈ حزوره » لعبه الحزوره 
 💥 ≈ محيبس » لعبه المحيبس او بات 
-ٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 ]]
 end
 if MsgText[1] == 'روليت' then
@@ -279,15 +287,15 @@ end
 if MsgText[1] == 'قائمه الالعاب' then
 sendMsg(msg.chat_id_,msg.id_,[[
 🙋🏻‍♂¦ اهلا بك عزيزي 
-🎮¦ اليك قائمه الالعاب
+🎮¦ اليك الالعاب ک تالي ...
 
-🚸 ≈ الاسرع » لعبه تطابق السمايلات
+🚸 ≈ الاسرع » تطابق السمايلات
 📬 ≈ معاني » لعبه معاني السمايلات
 🎭 ≈ ترتيب » لعبه ترتيب الكلمات
 🎮 ≈ روليت » لعبه روليت الشهيره 
 📛 ≈ حزوره » لعبه الحزوره 
 💥 ≈ محيبس » لعبه المحيبس او بات 
-ٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 ⚖¦ ݪݪـﻤزيد م̷ـــن آݪمعـݪومـآت ݛآسݪنآ
 ⚖¦ مطور آݪـبوت ↓
 ⚖¦ م •⊱ ]]..SUDO_USER..[[ ⊰• √]])
@@ -335,7 +343,7 @@ sendMsg(msg.chat_id_,msg.id_,"*📬¦ لا تستطيع اضافة اكثر من
 redis:del(boss.."SETEX:MSG"..msg.chat_id_..""..msg.sender_user_id_)  
 return false  end 
 local GET_IDUSER = redis:get(boss..'SET:ID:USER:NUM'..msg.chat_id_)  
-sendMsg(msg.chat_id_,msg.id_,"\n📬*¦ طكو طكو عمي 😻 تم اضافة له { "..msg.text.." }* نقطه")
+sendMsg(msg.chat_id_,msg.id_,"\n📬*¦ طكو طكو عمي 😻 تم اضافة له { "..msg.text.." }* مجوهره")
 redis:incrby(boss..':User_Points:'..msg.chat_id_..GET_IDUSER,msg.text)  
 end
 redis:del(boss.."SETEX:MSG"..msg.chat_id_..""..msg.sender_user_id_)  
