@@ -1607,11 +1607,11 @@ elseif data.type_.ID == "ChatTypeChannel" then
 return sendMsg(ChatID,MsgID,"🏌‍♂*┊*عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
 if redis:sismember(boss..':MONSHA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,'🏌‍♂*┊*العضو » ❪ '..UserName..' ❫\n🎟*┇*لايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد منشىء في البوت \n✓️') 
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*لايدي » ❪ `'..UserID..'` ❫\n💯*┇*انه بالتأكيد منشىء في البوت \n✓️') 
 end
 redis:hset(boss..'username:'..UserID, 'username', UserName)
 redis:sadd(boss..':MONSHA_BOT:'..ChatID,UserID)
-return sendMsg(ChatID,MsgID,'🏌‍♂*┊*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح منشىء في البوت \n✓️')
+return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..' ❫\n🎟*┇*الايدي » ❪ `'..UserID..'` ❫\n💯*┇*تمت ترقيته ليصبح منشىء في البوت \n✓️')
 end
 
 if cmd == "remmnsha" then
