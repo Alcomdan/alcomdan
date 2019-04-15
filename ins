@@ -1,13 +1,14 @@
 #!/bin/bash 
 
 --[[
-#      ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇                
-#      ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇
-#      ▇▇          ▇ @hlh313   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇
-#      ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @hlh313
-#      ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @hlh_313  ▇▄                 ▇▇                 ▇▇
-#      ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313
+#      ▇▇▇                              ▇▇▇            ▄▇▇▇▇▇▄              ▇▇                                    ▇▇                
+#      ▇▇   ▇                        ▇   ▇▇          ▄▇                ▇▄                     ▇▇                  ▇▇
+#      ▇▇     ▇ @hlh313   ▇     ▇▇         ▄▇    ▄▄▄    ▇▄                            ▇▇ ▇▇
+#      ▇▇        ▇             ▇         ▇▇     ▄▇                            ▇▄                       ▇▇ ▇▇ ¦ Dev : @hlh313
+#      ▇▇           ▇       ▇            ▇▇   ▄▇ ¦ Dev : @hlh_313  ▇▄              ▇▇                 ▇▇
+#      ▇▇              ▇▇                ▇▇  ▄▇                                    ▇▄   ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313
 #---------------------------------------------------------------------
+]]
 cd $(cd $(dirname $0); pwd)
 Day_now=$(date +%F)
 RED='\033[0;31m'
@@ -23,28 +24,28 @@ Version=`lsb_release -rs | cut -f1 -d"."`
 
 if [ "$Version" == "18" ];then
 echo -e "${SMAY}\n"
-echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
-echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
-echo -e " ▇▇          ▇ @hlh313   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇"
-echo -e " ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @hlh313"
-echo -e " ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @hlh_313  ▇▄                 ▇▇                 ▇▇"
-echo -e " ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313"
+echo -e " ▇▇▇                              ▇▇▇            ▄▇▇▇▇▇▄              ▇▇                                    ▇▇"
+echo -e " ▇▇   ▇                        ▇   ▇▇          ▄▇                ▇▄                     ▇▇                  ▇▇"
+echo -e " ▇▇     ▇ @hlh313   ▇     ▇▇         ▄▇    ▄▄▄    ▇▄                            ▇▇ ▇▇"
+echo -e " ▇▇        ▇             ▇         ▇▇     ▄▇                            ▇▄                       ▇▇ ▇▇ ¦ Dev : @hlh313"
+echo -e " ▇▇           ▇       ▇            ▇▇   ▄▇ ¦ Dev : @hlh_313  ▇▄              ▇▇                 ▇▇"
+echo -e " ▇▇              ▇▇                ▇▇  ▄▇                                    ▇▄   ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313"
 echo -e " ----------------------------------------------------------------------"
 echo -e "${CNIL}"
 echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
 ${CNIL}";
-echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source Th3Boss 
+echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source HLH313 
 ${CNIL}";
 exit;
 fi
 
 echo -e "${SMAY}\n"
-echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
-echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
-echo -e " ▇▇          ▇ @hlh313   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇"
-echo -e " ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @hlh313"
-echo -e " ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @hlh_313  ▇▄                 ▇▇                 ▇▇"
-echo -e " ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313"
+echo -e " ▇▇▇                              ▇▇▇            ▄▇▇▇▇▇▄              ▇▇                                    ▇▇"
+echo -e " ▇▇   ▇                        ▇   ▇▇          ▄▇                ▇▄                     ▇▇                  ▇▇"
+echo -e " ▇▇     ▇ @hlh313   ▇     ▇▇         ▄▇    ▄▄▄    ▇▄                            ▇▇ ▇▇"
+echo -e " ▇▇        ▇             ▇         ▇▇     ▄▇                            ▇▄                       ▇▇ ▇▇ ¦ Dev : @hlh313"
+echo -e " ▇▇           ▇       ▇            ▇▇   ▄▇ ¦ Dev : @hlh_313  ▇▄              ▇▇                 ▇▇"
+echo -e " ▇▇              ▇▇                ▇▇  ▄▇                                    ▇▄   ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313"
 echo -e " ----------------------------------------------------------------------"
 echo -e "${CNIL}"
 
@@ -53,7 +54,7 @@ memory_free=`awk '/^Mem/ {print $4}' <(free -m)`
 if [ "$memory_free" -le 60 ]; then
 echo -e "${RED}¦
 ¦ CAUTION:${WHITEC} Your RAM size is less than 60MB.
-¦ NOW you can not install the SOURCE TH3BOSS. \n
+¦ NOW you can not install the SOURCE HLH313. \n
 ¦${WHITB}¦ YOUR RAM FREE SIZE IS : ${SMAY}${memory_free}MB${CNIL}"
 exit ;
 fi
@@ -64,11 +65,11 @@ if [ "${PKG_OK}" == "installed" ]; then
 if [ "$1" == "-R" ] ; then
 GET_INSTALL="NO"
 else
-GET_INSTALL=$(redis-cli get TH3BOSS_INSTALL)
+GET_INSTALL=$(redis-cli get HLH313_INSTALL)
 fi
 if [ "${GET_INSTALL}" == "Yes" ]; then
 echo -e "
-${SMAY}>> ${LSAMAY}Source TH3BOSS${SMAY} is Already Installed ^_^ .\n${CNIL}"
+${SMAY}>> ${LSAMAY}Source HLH313${SMAY} is Already Installed ^_^ .\n${CNIL}"
 sudo luarocks install luautf8
 sudo chmod +x ./run
 sudo chmod +x ./TG
@@ -84,7 +85,7 @@ echo -e "\x1B[01;90m\n¦ software-properties-common installing ... \n\x1B[0m"
 sudo apt-get install software-properties-common -y
 echo -e "\x1B[01;90m\n¦ ubuntu-toolchain installing ...\n \x1B[0m"
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-# BY _ [ OMAR ALSARY >> @BLCON | MOHAMED HISHAM >> @TH3BOSS ]
+# BY _ [ OMAR ALSARY >> @HLH313 | MOHAMED HISHAM >> @HLH313 ]
 echo -e "\x1B[01;90m\n¦ install luarocks v2.4.3 ... \n\x1B[0m"
 sudo  wget https://luarocks.org/releases/luarocks-2.4.3.tar.gz
 sudo  tar zxpf luarocks-2.4.3.tar.gz
