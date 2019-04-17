@@ -438,7 +438,7 @@ Boss = {
 "^(بيع مجوهراتي) (%d+)$",
 "^(روليت)$", 
 "^(قائمه الالعاب)$", 
-  },
- iMax = iMax,
- dMax = dMax,
+ },
+ iBoss = games,
+ dBoss = procces,
  }

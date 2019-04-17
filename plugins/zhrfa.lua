@@ -1796,8 +1796,8 @@ return {
 Boss = {
 "^(زخرفه)$"
  },
- iMax = iMax,
- dMax = dMax,
+ iBoss = Zhrfa,
+ dBoss = TextRes,
  }
-
+ 
  
