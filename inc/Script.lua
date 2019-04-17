@@ -65,7 +65,7 @@ ali = {
 }
 ssssys = ali[math.random(#ali)]
 sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,
-'🎇┇'..ssssys..'\n'
+'┇'..ssssys..'\n'
 ..'🎟┇ايديـك ❪ '..msg.sender_user_id_..' ❫\n'
 ..UserNameID
 ..'👮‍♀️┇رتبتـك ❪ '..msg.TheRank..' ❫\n'
@@ -3677,6 +3677,6 @@ Boss = {
  
  
  },
- iBoss = iBoss,
- dBoss = dBoss,
+ iMax = iMax,
+ dMax = dMax,
  }
