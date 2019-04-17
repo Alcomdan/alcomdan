@@ -65,14 +65,15 @@ ali = {
 }
 ssssys = ali[math.random(#ali)]
 sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,
-'┇'..ssssys..'\n'
+'🎇┇'..ssssys..'\n'
 ..'🎟┇ايديـك ❪ '..msg.sender_user_id_..' ❫\n'
 ..UserNameID
 ..'👮‍♀️┇رتبتـك ❪ '..msg.TheRank..' ❫\n'
 ..'🎲┇تفاعلك ❪ '..Get_Ttl(msgs)..' ❫\n'
 ..'💬┇رسائلك ❪ '..msgs..' ❫\n'
 ..'🚸┇سحكاتـك ❪ '..rfih..' ❫\n'
-..'💎┇مجوهراتك ❪ '..zz..' ❫\n'
+..'📞┇جـهـاتك ❪ '..NumGha..' ❫\n'
+..'💎┇مجوهراتك ❪ '..nko..' ❫\n'
 ,dl_cb,nil)
 else
 sendMsg(msg.chat_id_,msg.id_,
@@ -83,7 +84,7 @@ sendMsg(msg.chat_id_,msg.id_,
 ..'💬┇رسائلك ❪ '..msgs..' ❫\n'
 ..'🚸┇سحكاتـك ❪ '..rfih..' ❫\n'
 ..'📞┇الـجـهـات ❪ '..NumGha..' ❫\n'
-..'💎┇مجوهراتك ❪ '..zz..' ❫\n')
+..'💎┇مجوهراتك ❪ '..nko..' ❫\n')
 end
 end) 
 end ,nil)
@@ -408,7 +409,7 @@ redis:set(boss..'linkGroup'..msg.chat_id_,LinkGp)
 redis:setex(boss..'ExCmdLink'..msg.chat_id_,120,true)
 return sendMsg(msg.chat_id_,msg.id_,"🙋🏼‍♂️*¦* تم انشاء رابط جديد \n🔖¦ ["..LinkGp.."]\n🔖¦ لعرض الرابط ارسل { الرابط } \n")
 else
-return sendMsg(msg.chat_id_,msg.id_,"📛¦ لا يمكنني انشاء رابط للمجموعه .\n??¦ لانني لست مشرف في المجموعه \n ❕")
+return sendMsg(msg.chat_id_,msg.id_,"📛¦ لا يمكنني انشاء رابط للمجموعه .\n🎟¦ لانني لست مشرف في المجموعه \n ❕")
 end
 else
 return sendMsg(msg.chat_id_,msg.id_,"📛¦ لقد قمت بانشاء الرابط سابقا .\n🎟¦ ارسل { الرابط } لرؤيه الرابط  \n ❕")
@@ -3677,6 +3678,6 @@ Boss = {
  
  
  },
- iMax = iMax,
- dMax = dMax,
+ iBoss = iBoss,
+ dBoss = dBoss,
  }
