@@ -43,15 +43,14 @@ GetPhotoUser(msg.sender_user_id_,function(arg, data)
 if data.photos_[0] then 
 ali = {
 'بمكن ازحف😹😌',
-'بشر زربه💩',
 'لاقيمه للقمر امام وجهك🌚🥀',
 'خليني احبك🙈❤️',
 'ببكن خاص 🌚😹',
-'ببكن حلق🙊💋',
+'نـكـبـل 🙈♥',
 'لاخلقه ولا اخلاق☹️😹',
 'امشي ورا السده🌚😹',
 'يحفظك ابو هاشم🌚😹',
-'وجه زربه💩😹',
+'ش̷ـــۛهہٰ۫ﹻل ؏ٰـس̷ِـــﮧٰ͜ـ͡ل ،₍🍯😻⁾ ',
 'ياحلو منين الله جابك🙈❤️',
 'خلينه نكبل🙈❤️',
 'طيح الله حظك وحظ ابوك😹',
@@ -949,9 +948,17 @@ return false
 end
 
 if MsgText[1]== 'جهاتي' then
-return '🧟‍♂*¦*  عدد جهہآتگ آلمـضـآفهہ‏‏ » 【'..(redis:get(boss..':adduser:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)..'】 . \n🐾'
+return '🧟‍♂*¦*  عدد جهہآتگ آلمـضـآفهہ‏‏ ⇜ ❪ '..(redis:get(boss..':adduser:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)..' ❫ \n🐾'
 end
 
+if MsgText[1]== 'اسمي' then
+GetUserID(msg.sender_user_id_,function(arg,data)
+local FlterName = FlterName(data.first_name_..'\n\n⚁┇اسمك الثاني ⇜ '..(data.last_name_ or ""),90)
+local Get_info = "⚀┇اسمك الاول ⇜ \n "..FlterName.." \n"
+return sendMsg(msg.chat_id_,msg.id_,Get_info)    
+end,nil)
+return false
+end
 
 if MsgText[1] == 'معلوماتي' or MsgText[1] == 'موقعي' then
 GetUserID(msg.sender_user_id_,function(arg,data)
@@ -1199,7 +1206,7 @@ return false
 end 
 end
 
-if MsgText[1] == "تنظيف المجموعات" then
+if MsgText[1] == "تنظيف المجموعات" or MsgText[1] == "تنظيف المجموعات 🗑" then
 local groups = redis:smembers(boss..'group:ids')
 local GroupsIsFound = 0
 for i = 1, #groups do 
@@ -1224,7 +1231,7 @@ end)
 end
 return false
 end
-if MsgText[1] == "تنظيف المشتركين" then
+if MsgText[1] == "تنظيف المشتركين 🗑" or MsgText[1] == "تنظيف المشتركين 🗑" then
 local pv = redis:smembers(boss..'users')
 local NumPvDel = 0
 for i = 1, #pv do
@@ -1294,9 +1301,14 @@ return'🚸*¦* شـرط آلتفعيل آلبوت آذآ گآنت آلمـجم�
 end 
 end
 
-if MsgText[1] == 'المجموعات' or MsgText[1] == "المجموعات 🔝" then 
+if MsgText[1] == 'المجموعات' or MsgText[1] == "المجموعات 🔝" then
 if not msg.SudoUser then return "♦️*┇*هذا الامر يخص {المطور} فقط  \n❕" end
 return '📮*¦* عدد المجموعات المفعلة » `'..redis:scard(boss..'group:ids')..'`  ➼' 
+end
+
+if MsgText[1] == "المشتركين" or MsgText[1] == "المشتركين 💥" then
+if not msg.SudoUser then return "♦️*┇*هذا الامر يخص {المطور} فقط  \n❕" end
+return '👤*┊*عدد المشتركين في البوت : `'..redis:scard(boss..'users')..'` \n📡'
 end
 
 if MsgText[1] == 'قائمه المجموعات' then 
@@ -1506,7 +1518,7 @@ if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطو�
 return "💯 البوت شـغــال 🚀" 
 end
 
-if (MsgText[1]== "ايدي" or MsgText[1]=="ايدي 🆔") and msg.type == "pv" then return  "\n"..msg.sender_user_id_.."\n"  end
+if (MsgText[1]== "ايدي" or MsgText[1]=="ايديي🆔") and msg.type == "pv" then return  "\n👨🏻‍💻┊اهلن عزيزي المطور ايديك هوه ⏬\n\n🧟‍♂┊"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس 📡" and msg.type == "pv" then
 local inline = {{{text="⚜┇قنآهہ‏‏ آلسـورس ضـغـط هـنـآ ",url="t.me/hlh_313"}}}
@@ -1514,9 +1526,9 @@ send_key(msg.sender_user_id_,'  [⚜┇قناة سورس : مـاكـس](t.me/hl
 return false
 end
 
-if (MsgText[1]== "الاحصائيات 📈" or MsgText[1]=="الاحصائيات") then
+if (MsgText[1]== "الاحصائيات 🔍" or MsgText[1]=="الاحصائيات") then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
-return 'الاحصائيات : 📈 \n\n👥*¦* عدد المجموعات المفعله : '..redis:scard(boss..'group:ids')..'\n👤*¦* عدد المشتركين في البوت : '..redis:scard(boss..'users')..'\n📡'
+return '🎭┊الاحصائيات 🏌‍♂ \n\n👥*┊*عدد المجموعات المفعله : '..redis:scard(boss..'group:ids')..'\n👤*┊*عدد المشتركين في البوت : '..redis:scard(boss..'users')..'\n📡'
 end
 ---------------[End Function data] -----------------------
 if MsgText[1]=="اضف رد عام" or MsgText[1]=="اضف رد عام ➕" then
@@ -1564,13 +1576,13 @@ end
 if MsgText[1]== 'مسح' and MsgText[2]== 'رد عام' then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 redis:set(boss..'delrdall:'..msg.sender_user_id_,true) 
-return "📭¦ حسننا عزيزي  ✋🏿\n🗯¦ الان ارسل الرد لمسحها من  المجموعات 🍃"
+return "📭┊حسننا عزيزي  ✋🏿\n🗯┊الان ارسل الرد لمسحها من  المجموعات 🍃"
 end
 
 if MsgText[1]== 'مسح' and MsgText[2]== 'رد' then
 if not msg.Director then return "♦️*┇*هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❕" end
 redis:set(boss..'delrd:'..msg.sender_user_id_,true)
-return "📭¦ حسننا عزيزي  ✋🏿\n🗯¦ الان ارسل الرد لمسحها من  للمجموعه 🍃"
+return "📭┊حسننا عزيزي  ✋🏿\n🗯┊الان ارسل الرد لمسحها من  للمجموعه 🍃"
 end
 
 if MsgText[1]== 'الردود' then
@@ -1583,10 +1595,10 @@ local audio 	= redis:hkeys(boss..'replay_audio:group:'..msg.chat_id_)
 local sticker 	= redis:hkeys(boss..'replay_sticker:group:'..msg.chat_id_)
 local video 	= redis:hkeys(boss..'replay_video:group:'..msg.chat_id_)
 if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
-return '🚸*¦* لا يوجد ردود مضافه حاليا \n❕' 
+return '🚸*┊*لا يوجد ردود مضافه حاليا \n❕' 
 end
 local ii = 1
-local message = '💬*¦* ردود البوت في المجموعه  :\n\n'
+local message = '💬*┊*ردود البوت في المجموعه  :\n\n'
 for i=1, #photo 	do message = message ..ii..' - *{* '..	photo[i]..' *}_*( صوره 🏞 ) \n' 	 ii = ii + 1 end
 for i=1, #names 	do message = message ..ii..' - *{* '..	names[i]..' *}_*( نص 🗯 ) \n'  	 ii = ii + 1 end
 for i=1, #voice 	do message = message ..ii..' - *{* '..  voice[i]..' *}_*( بصمه 🎙 ) \n' 	 ii = ii + 1 end
@@ -1607,10 +1619,10 @@ local audio 	= redis:hkeys(boss..'replay_audio:group:')
 local sticker 	= redis:hkeys(boss..'replay_sticker:group:')
 local video 	= redis:hkeys(boss..'replay_video:group:')
 if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
-return '🚸*¦* لا يوجد ردود مضافه حاليا \n❕' 
+return '🚸*┊*لا يوجد ردود مضافه حاليا \n❕' 
 end
 local ii = 1
-local message = '💬*¦* الردود العامه في البوت :   :\n\n'
+local message = '💬*┊*الردود العامه في البوت :   :\n\n'
 for i=1, #photo 	do message = message ..ii..' - *{* '..	photo[i]..' *}_*( صوره 🏞 ) \n' 	ii = ii + 1 end
 for i=1, #names 	do message = message ..ii..' - *{* '..	names[i]..' *}_*( نص 🗯 ) \n'  	ii = ii + 1 end
 for i=1, #voice 	do message = message ..ii..' - *{* '..	voice[i]..' *}_*( بصمه 🎙 ) \n' 	ii = ii + 1 end
@@ -1626,13 +1638,13 @@ if MsgText[1]=="اضف رد" and msg.GroupActive then
 if not msg.Director then return "♦️*┇*هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❕" end
 redis:setex(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_,300,true) 
 redis:del(boss..'replay1'..msg.chat_id_..msg.sender_user_id_)
-return "📭¦ حسننا , الان ارسل كلمه الرد \n-"
+return "📭┊حسننا , الان ارسل كلمه الرد \n-"
 end
 
 if MsgText[1] == "ضع اسم للبوت" or MsgText[1]== 'ضع اسم للبوت ©' then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 redis:setex(boss..'namebot:witting'..msg.sender_user_id_,300,true)
-return"📭¦ حسننا عزيزي  ✋🏿\n🗯¦ الان ارسل الاسم  للبوت 🍃"
+return"📭┊حسننا عزيزي  ✋🏿\n🗯┊الان ارسل الاسم  للبوت 🍃"
 end
 
 
@@ -1647,7 +1659,7 @@ HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
 CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
 uptime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes."}'`
 
-echo '📟 •⊱ { Seystem } ⊰•\n*»» '"$linux_version"'*' 
+echo '📟 ❪ Seystem ❫\n*»» '"$linux_version"'*' 
 echo '*------------------------------\n*🔖 ❪ Memory ❫\n*»» '"$memUsedPrc"'*'
 echo '*------------------------------\n*💾 ❪ HardDisk ❫\n*»» '"$HardDisk"'*'
 echo '*------------------------------\n*⚙️ ❪ Processor ❫\n*»» '"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'*'
@@ -1668,7 +1680,7 @@ HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
 CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
 uptime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes."}'`
 
-echo '📟l •⊱ { نظام التشغيل } ⊰•\n*»» '"$linux_version"'*' 
+echo '📟l ❪ نظام التشغيل ❫\n*»» '"$linux_version"'*' 
 echo '*------------------------------\n*🔖l ❪ الذاكره العشوائيه ❫\n*»» '"$memUsedPrc"'*'
 echo '*------------------------------\n*💾l ❪ وحـده الـتـخـزيـن ❫\n*»» '"$HardDisk"'*'
 echo '*------------------------------\n*⚙️l ❪ الـمــعــالــج ❫\n*»» '"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'*'
@@ -1691,8 +1703,10 @@ return [[
 🔰┇م4 » آوآمر آلخدمه 
 🕹┇م المطور »  آوآمـر آلمـطـور
 ⚡️┇اوامر الرد » لآضـآفهہ‏‏ رد مـعين
-⚜┇الوسائط » لمعرفه الاعدادات 
+♦️┇الوسائط » لمعرفه الاعدادات 
 🛠┇الاعدادات » عدادات المجموعه
+⚜┇سورس » سورس البوت
+💯┇المطور » مطور البوت 
 
  ‏‎‏❋¦ رآسـلني للآسـتفسـآر ☜ { ]]..SUDO_USER..[[ } ✓ ]]
 end
@@ -1964,40 +1978,44 @@ if MsgText[1] == "التاريخ" then
 return "➖\n📆| الـتـاريـخ : "..os.date("%Y/%m/%d")
 end
 
-if MsgText[1] == "تفعيل الاشتراك الاجباري" then
+if MsgText[1]== "سحكاتي" then
+return '🚸*¦*  عدد سحہكآتگ ⇜ ❪ '..(redis:get(boss..':edited:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)..' ❫ \n🐾'
+end
+
+if MsgText[1] == "تفعيل الاشتراك الاجباري" or MsgText[1] == "تفعيل الاشتراك الاجباري 💯" then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 if redis:get(boss..":UserNameChaneel") then
-return "📑| اهلا عزيزي المطور \n🔖| الاشتراك بالتأكيد مفعل"
+return "📑┊اهلا عزيزي المطور \n🔖┊الاشتراك بالتأكيد مفعل"
 else
 redis:setex(boss..":ForceSub:"..msg.sender_user_id_,350,true)
-return "📑| مرحبا بـك في نظام الاشتراك الاجباري\n🔖| الان ارسل معرف قـنـاتـك"
+return "📑┊مرحبا بـك في نظام الاشتراك الاجباري\n🔖┊الان ارسل معرف قـنـاتـك"
 end
 end
 
-if MsgText[1] == "تعطيل الاشتراك الاجباري" then
+if MsgText[1] == "تعطيل الاشتراك الاجباري" or MsgText[1] == "تعطيل الاشتراك الاجباري ♻️" then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 local SubDel = redis:del(boss..":UserNameChaneel")
 if SubDel == 1 then
-return "🔖| تم تعطيل الاشتراك الاجباري . \n✓"
+return "🔖┊تم تعطيل الاشتراك الاجباري . \n✓"
 else
-return "🔖| الاشتراك الاجباري بالفعل معطل . \n✓"
+return "🔖┊الاشتراك الاجباري بالفعل معطل . \n✓"
 end
 end
 
-if MsgText[1] == "الاشتراك الاجباري" then
+if MsgText[1] == "الاشتراك الاجباري" or MsgText[1] == "الاشتراك الاجباري ⚠️" then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 local UserChaneel = redis:get(boss..":UserNameChaneel")
 if UserChaneel then
-return "🔖| اهلا عزيزي المطور \n🔖| الاشتراك الاجباري للقناة : ["..UserChaneel.."]\n✓"
+return "🔖┊اهلا عزيزي المطور \n🔖┊الاشتراك الاجباري للقناة : ["..UserChaneel.."]\n✓"
 else
-return "🔖| لا يوجد قناة مفعله ع الاشتراك الاجباري. \n✓"
+return "🔖┊لا يوجد قناة مفعله ع الاشتراك الاجباري. \n✓"
 end
 end
 
-if MsgText[1] == "تغيير الاشتراك الاجباري" then
+if MsgText[1] == "تغيير الاشتراك الاجباري" or MsgText[1] == "تغيير الاشتراك الاجباري 🧟‍♂" then
 if not msg.SudoBase then return"♦️*┇*هذا الامر يخص {المطور الاساسي} فقط  \n❕" end
 redis:setex(boss..":ForceSub:"..msg.sender_user_id_,350,true)
-return "📑| مرحبا بـك في نظام الاشتراك الاجباري\n🔖| الان ارسل معرف قـنـاتـك"
+return "📑┊مرحبا بـك في نظام الاشتراك الاجباري\n🔖┊الان ارسل معرف قـنـاتـك"
 end
 
 
@@ -2029,15 +2047,15 @@ local text = '🙋🏻‍♂┊اهلا عزيزي آلمـطـور ♥\n🔻┊
 local keyboard = {
 {"ضع اسم للبوت ©","ضع صوره للترحيب 🌄"},
  {"تعطيل التواصل ✖️","تفعيل التواصل 🔛"},
-{"تعطيل البوت خدمي","تفعيل البوت خدمي"},
- {"المطورين 🕹","المجموعات","الاحصائيات 📈"},
+{"تعطيل البوت خدمي","تفعيل البوت خدمي","المطورين 🕹"},
+ {"المشتركين 💥","المجموعات 🔝","الاحصائيات 🔍"},
  {"اضف رد عام ➕","الردود العامه 🗨"},
  {"اذاعه 🗣","اذاعه خاص 👤"},
 {"اذاعه عام 📢","اذاعه عام بالتوجيه 📣"},
- {"تحديث ♻️","قائمه العام 📜","ايدي 🆔"},
-{"تعطيل الاشتراك الاجباري","تفعيل الاشتراك الاجباري"},
-{"تغيير الاشتراك الاجباري","الاشتراك الاجباري "},
-{"تنظيف المشتركين","تنظيف المجموعات"},
+ {"تحديث ♻️","قائمه العام 📜","ايديي🆔"},
+{"تعطيل الاشتراك الاجباري ♻️","تفعيل الاشتراك الاجباري 💯"},
+{"تغيير الاشتراك الاجباري 🧟‍♂","الاشتراك الاجباري ⚠️"},
+{"تنظيف المشتركين 🗑","تنظيف المجموعات 🗑"},
  {"قناة السورس 📡"},
  {"تحديث السورس ™"},
  {"الغاء الامر ✖️"}}
@@ -2057,7 +2075,7 @@ text = [[⚜┊اهلا انآ بوت آسـمـي   []]..redis:get(boss..':Name
 🎭┊مـعـرف الـمـطـور : ]]..SUDO_USER..[[
 ]]
 else
-text = [[⚜┊اهلا انآ بوت آسـمـي ماكس  []]..redis:get(boss..':NameBot:')..[[] 🎖
+text = [[⚜┊اهلا انآ بوت آسـمـي  []]..redis:get(boss..':NameBot:')..[[] 🎖
 👨🏻‍✈️┊آختصـآصـي حمـآيهہ‌‏ آلمـجمـوعآت
 📛┊مـن آلسـبآم وآلتوجيهہ‌‏ وآلتگرآر وآلخ...
 🚸┊فقط آلمـطـور يسـتطـيع تفعيل آلبوت
@@ -2119,7 +2137,7 @@ sendMsg(msg.chat_id_,msg.id_,"📛¦ عذرآ لآ يمـگنگ آرسـآل { �
 return false
 end
 redis:setex(boss.."USER_MSG_TWASEL"..msg.date_,43200,msg.id_)
-sendMsg(msg.chat_id_,msg.id_,"🗯¦ تم آرسـآل رسـآلتگ آلى آلمـطـور\n📬¦ سـآرد عليگ في آقرب وقت\n🏌 "..SUDO_USER)
+sendMsg(msg.chat_id_,msg.id_,"🗯┊تم آرسـآل رسـآلتگ آلى آلمـطـور\n📬┊سـآرد عليگ في آقرب وقت\n🏌 "..SUDO_USER)
 tdcli_function({ID='GetChat',chat_id_ = SUDO_ID},function(arg,data)
 fwdMsg(SUDO_ID,msg.chat_id_,msg.id_)
 end,nil)
@@ -2138,27 +2156,27 @@ return sendMsg(msg.chat_id_,msg.id_,'(['..klma..'])\n  ✓ تم اضافت ال�
 elseif msg.photo then 
 redis:hset(boss..'replay_photo:group:'..msg.chat_id_,klma,photo_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه صوره للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه صوره للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
 elseif msg.voice then
 redis:hset(boss..'replay_voice:group:'..msg.chat_id_,klma,voice_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه بصمه صوت للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لسماع البصمه الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه بصمه صوت للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لسماع البصمه الاتيه .')
 elseif msg.animation then
 redis:hset(boss..'replay_animation:group:'..msg.chat_id_,klma,animation_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه متحركه للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه متحركه للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
 elseif msg.video then
 redis:hset(boss..'replay_video:group:'..msg.chat_id_,klma,video_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه فيديو للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الفيديو الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه فيديو للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الفيديو الاتي .')
 elseif msg.audio then
 redis:hset(boss..'replay_audio:group:'..msg.chat_id_,klma,audio_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه للصوت للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوت الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه للصوت للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوت الاتي .')
 elseif msg.sticker then
 redis:hset(boss..'replay_sticker:group:'..msg.chat_id_,klma,sticker_id)
 redis:del(boss..'addrd:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه ملصق للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملصق الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه ملصق للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملصق الاتي .')
 end  
 
 end
@@ -2173,27 +2191,27 @@ return sendMsg(msg.chat_id_,msg.id_,'(['..klma..'])\n  ✓ تم اضافت ال�
 elseif msg.photo then 
 redis:hset(boss..'replay_photo:group:',klma,photo_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه صوره للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه صوره للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
 elseif msg.voice then
 redis:hset(boss..'replay_voice:group:',klma,voice_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه بصمه صوت للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لسماع البصمه الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه بصمه صوت للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لسماع البصمه الاتيه .')
 elseif msg.animation then
 redis:hset(boss..'replay_animation:group:',klma,animation_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه متحركه للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه متحركه للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
 elseif msg.video then
 redis:hset(boss..'replay_video:group:',klma,video_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه فيديو للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الفيديو الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه فيديو للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الفيديو الاتي .')
 elseif msg.audio then
 redis:hset(boss..'replay_audio:group:',klma,audio_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه للصوت للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوت الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه للصوت للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوت الاتي .')
 elseif msg.sticker then
 redis:hset(boss..'replay_sticker:group:',klma,sticker_id)
 redis:del(boss..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
-return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه ملصق للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملصق الاتي .')
+return sendMsg(msg.chat_id_,msg.id_,'🗂┊تم اضافه ملصق للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملصق الاتي .')
 end  
 
 end
@@ -2208,19 +2226,19 @@ local url , res = https.request(ApiToken..'/getchatmember?chat_id='..msg.text..'
 if res == 400 then
 local Req = JSON.decode(url)
 if Req.description == "Bad Request: chat not found" then 
-sendMsg(msg.chat_id_,msg.id_,"📑| عذرا , هناك خطأ لديك \n🔖| المعرف الذي ارسلته ليس معرف قناة.")
+sendMsg(msg.chat_id_,msg.id_,"📑┊عذرا , هناك خطأ لديك \n🔖┊المعرف الذي ارسلته ليس معرف قناة.")
 return false
 elseif Req.description == "Bad Request: CHAT_ADMIN_REQUIRED" then
-sendMsg(msg.chat_id_,msg.id_,"📑| عذرا , لقد نسيت شيئا \n🔖| يجب رفع البوت مشرف في قناتك لتتمكن من تفعيل الاشتراك الاجباري .")
+sendMsg(msg.chat_id_,msg.id_,"📑┊عذرا , لقد نسيت شيئا \n🔖┊يجب رفع البوت مشرف في قناتك لتتمكن من تفعيل الاشتراك الاجباري .")
 return false
 end
 else
 redis:set(boss..":UserNameChaneel",msg.text)
-sendMsg(msg.chat_id_,msg.id_,"🔖| جـيـد , الان لقد تم تفعيل الاشتراك الاجباري\n📮| على قناتك : ["..msg.text.."]")
+sendMsg(msg.chat_id_,msg.id_,"🔖┊جـيـد , الان لقد تم تفعيل الاشتراك الاجباري\n📮┊على قناتك ⇜ ["..msg.text.."]")
 return false
 end
 else
-sendMsg(msg.chat_id_,msg.id_,"📑| عذرا , عزيزي المطور \n🔖| هذا ليس معرف قناة , حاول مجددا .")
+sendMsg(msg.chat_id_,msg.id_,"📑┊عذرا , عزيزي المطور \n🔖┊هذا ليس معرف قناة , حاول مجددا .")
 return false
 end
 end
@@ -2229,7 +2247,7 @@ if redis:get(boss..'namebot:witting'..msg.sender_user_id_) then --- استقبا
 redis:del(boss..'namebot:witting'..msg.sender_user_id_)
 redis:set(boss..':NameBot:',msg.text)
 Start_Bot() 
-sendMsg(msg.chat_id_,msg.id_,"📭¦ تم تغير اسم البوت  ✋🏿\n🗯¦ الان اسمه "..Flter_Markdown(msg.text).." \n✓")
+sendMsg(msg.chat_id_,msg.id_,"📭┊تم تغير اسم البوت  ✋🏿\n🗯┊الان اسمه "..Flter_Markdown(msg.text).." \n✓")
 return false
 end
 
@@ -2242,7 +2260,7 @@ redis:hdel(boss..'replay_audio:group:',msg.text)
 redis:hdel(boss..'replay_sticker:group:',msg.text)
 redis:hdel(boss..'replay_video:group:',msg.text)
 redis:setex(boss..'allreplay:'..msg.chat_id_..msg.sender_user_id_,300,msg.text)
-return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جوا ب الردالعام \n🔛¦ [[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] ✓\n-")
+return sendMsg(msg.chat_id_,msg.id_,"📜┊جيد , يمكنك الان ارسال جوا ب الردالعام \n🔛┊[[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] ✓\n-")
 end
 end
 
@@ -2256,7 +2274,7 @@ local audio = redis:hget(boss..'replay_audio:group:',msg.text)
 local sticker = redis:hget(boss..'replay_sticker:group:',msg.text)
 local video = redis:hget(boss..'replay_video:group:',msg.text)
 if not (names or photo or voice or animation or audio or sticker or video) then
-return sendMsg(msg.chat_id_,msg.id_,'💬*¦* هذا الرد ليس مضاف في قائمه الردود 📛')
+return sendMsg(msg.chat_id_,msg.id_,'💬*┊*هذا الرد ليس مضاف في قائمه الردود 📛')
 else
 redis:hdel(boss..'replay:all',msg.text)
 redis:hdel(boss..'replay_photo:group:',msg.text)
@@ -2305,7 +2323,7 @@ local pv = redis:smembers(boss..'users')
 local groups = redis:smembers(boss..'group:ids')
 local allgp =  #pv + #groups
 if allgp >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'📑| اهلا عزيزي المطور \n🔖| جاري نشر التوجيه للمجموعات وللمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر التوجيه للمجموعات وللمشتركين ...')			
 end
 for i = 1, #pv do 
 sendMsg(pv[i],0,Flter_Markdown(msg.text),nil,function(arg,data)
@@ -2327,14 +2345,14 @@ rem_data_group(groups[i])
 end
 end)
 end
-return sendMsg(msg.chat_id_,msg.id_,'📜*¦* تم اذاعه الكليشه بنجاح 🏌🏻\n🗣*¦* للمـجمـوعآت » *'..#groups..'* گروب \n👥*¦* للمـشـترگين » '..#pv..' مـشـترگ \n✓')
+return sendMsg(msg.chat_id_,msg.id_,'📜*┊*تم اذاعه الكليشه بنجاح 🏌🏻\n🗣*┊*للمـجمـوعآت » *'..#groups..'* گروب \n👥*¦* للمـشـترگين » '..#pv..' مـشـترگ \n✓')
 end
 
 if redis:get(boss..'fwd:pv'..msg.sender_user_id_) then ---- استقبال رساله الاذاعه خاص
 redis:del(boss..'fwd:pv'..msg.sender_user_id_)
 local pv = redis:smembers(boss..'users')
 if #pv >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'📑| اهلا عزيزي المطور \n🔖| جاري نشر الرساله للمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر الرساله للمشتركين ...')			
 end
 local NumPvDel = 0
 for i = 1, #pv do
@@ -2348,7 +2366,7 @@ NumPvDel = NumPvDel + 1
 end
 if #pv == i then 
 local SenderOk = #pv - NumPvDel
-sendMsg(msg.chat_id_,msg.id_,'🙍🏼‍♂️*¦* عدد المشتركين : '..#pv..'\n🗣*¦* تم الاذاعه الى '..SenderOk..' مشترك \n ✓') 
+sendMsg(msg.chat_id_,msg.id_,'🙍🏼‍♂️*┊*عدد المشتركين : '..#pv..'\n🗣*┊*تم الاذاعه الى '..SenderOk..' مشترك \n ✓') 
 end
 end)
 end
@@ -2358,7 +2376,7 @@ if redis:get(boss..'fwd:groups'..msg.sender_user_id_) then ---- استقبال �
 redis:del(boss..'fwd:groups'..msg.sender_user_id_)
 local groups = redis:smembers(boss..'group:ids')
 if #groups >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'📑| اهلا عزيزي المطور \n🔖| جاري نشر الرساله للمجموعات ...')			
+sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر الرساله للمجموعات ...')			
 end
 local NumGroupsDel = 0
 for i = 1, #groups do 
@@ -2373,11 +2391,11 @@ end
 if #groups == i then
 local AllGroupSend = #groups - NumGroupsDel
 if NumGroupsDel ~= 0 then
-MsgTDel = '📛*¦* تم حذف •⊱ { *'..NumGroupsDel..'*  } ⊰• من قائمه الاذاعه لانهم قامو بطرد البوت من المجموعه'
+MsgTDel = '📛*┊*تم حذف •⊱ { *'..NumGroupsDel..'*  } ⊰• من قائمه الاذاعه لانهم قامو بطرد البوت من المجموعه'
 else
 MsgTDel = ''
 end
-sendMsg(msg.chat_id_,msg.id_,'📑*¦* عدد المجموعات •⊱ { *'..#groups..'*  } ⊰•\n🗣*¦* تـم الاذاعه الى •⊱ { *'..AllGroupSend..'*  } ⊰•\n'..MsgTDel..'✓')
+sendMsg(msg.chat_id_,msg.id_,'📑*┊*عدد المجموعات •⊱ { *'..#groups..'*  } ⊰•\n🗣*┊*تـم الاذاعه الى •⊱ { *'..AllGroupSend..'*  } ⊰•\n'..MsgTDel..'✓')
 end
 end)
 end
@@ -2400,7 +2418,7 @@ local pv = redis:smembers(boss..'users')
 local groups = redis:smembers(boss..'group:ids')
 local allgp =  #pv + #groups
 if allgp == 500 then
-sendMsg(msg.chat_id_,msg.id_,'📑| اهلا عزيزي المطور \n🔖| جاري نشر التوجيه للمجموعات وللمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر التوجيه للمجموعات وللمشتركين ...')			
 end
 local number = 0
 for i = 1, #pv do 
@@ -2409,7 +2427,7 @@ end
 for i = 1, #groups do 
 fwdMsg(groups[i],msg.chat_id_,msg.id_,dl_cb,nil)
 end
-return sendMsg(msg.chat_id_,msg.id_,'📜*¦* تم اذاعه التوجيه بنجاح 🏌🏻\n🗣*¦* للمـجمـوعآت » *'..#groups..'* \n👥*¦* للخآص » '..#pv..'\n✓')			
+return sendMsg(msg.chat_id_,msg.id_,'📜*┊*تم اذاعه التوجيه بنجاح 🏌🏻\n🗣*┊*للمـجمـوعآت » *'..#groups..'* \n👥*┊*للخآص » '..#pv..'\n✓')			
 end
 
  
@@ -2457,7 +2475,7 @@ redis:hdel(boss..'replay_audio:group:'..msg.chat_id_,msg.text)
 redis:hdel(boss..'replay_sticker:group:'..msg.chat_id_,msg.text)
 redis:hdel(boss..'replay_video:group:'..msg.chat_id_,msg.text)
 redis:setex(boss..'replay1'..msg.chat_id_..msg.sender_user_id_,300,msg.text)
-return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جواب الرد \n🔛¦ [[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] ✓\n-")
+return sendMsg(msg.chat_id_,msg.id_,"📜┊جيد , يمكنك الان ارسال جواب الرد \n🔛┊[[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] ✓\n-")
 end
 end
 
@@ -2471,7 +2489,7 @@ local audio 	= redis:hget(boss..'replay_audio:group:'..msg.chat_id_,msg.text)
 local sticker 	= redis:hget(boss..'replay_sticker:group:'..msg.chat_id_,msg.text)
 local video 	= redis:hget(boss..'replay_video:group:'..msg.chat_id_,msg.text)
 if not (names or photo or voice or animation or audio or sticker or video) then
-return sendMsg(msg.chat_id_,msg.id_,'💬*¦* هذا الرد ليس مضاف في قائمه الردود 📛')
+return sendMsg(msg.chat_id_,msg.id_,'💬*┊*هذا الرد ليس مضاف في قائمه الردود 📛')
 else
 redis:hdel(boss..'replay:'..msg.chat_id_,msg.text)
 redis:hdel(boss..'replay_photo:group:'..msg.chat_id_,msg.text)
@@ -2958,7 +2976,7 @@ return sendMsg(msg.chat_id_,msg.id_,'📛*¦* لا يمكنني مسح الرس�
 end
 if redis:get(boss..'lock_woring'..msg.chat_id_) then
 GetUserID(msg.sender_user_id_,function(arg,data)
-local msgx = "📛¦ عذرا ممنوع لعب الالعاب  \n📛"
+local msgx = "??¦ عذرا ممنوع لعب الالعاب  \n📛"
 if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
 local USERCAR = utf8.len(USERNAME)
 SendMention(msg.chat_id_,data.id_,msg.id_,"👤¦ العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3302,7 +3320,7 @@ elseif Text== "لتحجي"  then return sendMsg(msg.chat_id_,msg.id_,"وانت �
 elseif Text== "معليك" or Text== "شعليك" then return sendMsg(msg.chat_id_,msg.id_,"عليه ونص 😡")
 elseif Text== "شدسون" or Text== "شداتسوون" or Text== "شدتسون" then return  sendMsg(msg.chat_id_,msg.id_,"نطبخ 😐")
 elseif Text:match(Bot_Name.." شلونك$") then 
-return sendMsg(msg.chat_id_,msg.id_,"احســن مــن انتهــــہ شــلونـــك شــخــبـارك يـــول مۂــــشتـــاقـــلك شــو ماكـــو 😹🌚")
+return sendMsg(msg.chat_id_,msg.id_,"احســن مــن انتهــــہ شــلونـــك شــخــبـارك يـــول مۂــــشتـــاقـــلك شــو ماكـــو 😹??")
 elseif Text== "يومه فدوه"  then return sendMsg(msg.chat_id_,msg.id_,"فدؤه الج حياتي 😍😙")
 elseif Text== "افلش"  then return sendMsg(msg.chat_id_,msg.id_,"باند عام من 30 بوت 😉")
 elseif Text== "احبج"  then return sendMsg(msg.chat_id_,msg.id_,"يخي احترم شعوري 😢")
@@ -3600,6 +3618,9 @@ Boss = {
 "^(شرط التفعيل)$",
 "^(قائمه المجموعات)$",
 "^(المجموعات)$",
+"^(المجموعات 🔝)$",
+"^(المشتركين)$",
+"^(المشتركين 💥)$",
 "^(اذاعه)$",
 "^(اذاعه عام)$",
 "^(اذاعه خاص)$",
@@ -3614,10 +3635,10 @@ Boss = {
 "^(المطورين 🕹)$",
 "^(تيست)$",
 "^(test)$",
-"^(ايدي 🆔)$",
+"^(ايديي🆔)$",
 "^(قناة السورس 📡)$",
 "^(الاحصائيات)$",
-"^(الاحصائيات 📈)$",
+"^(الاحصائيات 🔍)$",
 "^(اضف رد عام)$",
 "^(اضف رد عام ➕)$",
 "^(مسح الردود)$",
@@ -3634,6 +3655,8 @@ Boss = {
 "^(تحديث السورس)$",
 "^(تنظيف المجموعات)$",
 "^(تنظيف المشتركين)$",
+"^(تنظيف المجموعات 🗑)$",
+"^(تنظيف المشتركين 🗑)$",
 "^(رتبتي)$",
 "^(ضع اسم للبوت ©)$",
 "^(ضع صوره للترحيب 🌄)$",
@@ -3645,6 +3668,8 @@ Boss = {
 "^(الرتبه)$",
 "^(الغاء)$",
 "^(الساعه)$",
+"^(سحكاتي)$",
+"^(اسمي)$",
 "^(التاريخ)$",
 "^(/[Ss]tore)$",
 "^(اصدار السورس)$",
@@ -3657,9 +3682,14 @@ Boss = {
 "^(تعطيل الاشتراك الاجباري)$", 
 "^(تغيير الاشتراك الاجباري)$", 
 "^(الاشتراك الاجباري)$", 
+"^(تفعيل الاشتراك الاجباري 💯)$", 
+"^(تعطيل الاشتراك الاجباري ♻️)$", 
+"^(تغيير الاشتراك الاجباري 🧟‍♂)$", 
+"^(الاشتراك الاجباري ⚠️)$", 
 "^(احظرني)$", 
 "^(اطردني)$", 
 "^(جهاتي)$", 
+
 
 
 "^(السورس)$",

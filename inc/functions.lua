@@ -673,7 +673,7 @@ function ownerlist(msg)
 local message = '*⭐️¦ المنشئيين :*\n\n'
 local monsha = redis:smembers(boss..':MONSHA_BOT:'..msg.chat_id_)
 if #monsha == 0 then 
-message = message .."📛| Not Creator ~⪼ لا يوجد منشئيين !\n"
+message = message .."♦️┇ Not Creator ~⪼ لا يوجد منشئيين !\n"
 else
 for k,v in pairs(monsha) do
 local info = redis:hgetall(boss..'username:'..v)
@@ -687,7 +687,7 @@ end
 message = message..'*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n\n📋¦ قائمه المدراء :*\n\n'
 local list = redis:smembers(boss..'owners:'..msg.chat_id_)
 if #list == 0 then  
-message = message.."📛| Not Director ~⪼ لا يوجد مدراء !\n" 
+message = message.."♦️┇ Not Director ~⪼ لا يوجد مدراء !\n" 
 else
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
@@ -706,7 +706,7 @@ end
 
 function GetListAdmin(msg)
 local list = redis:smembers(boss..'admins:'..msg.chat_id_)
-if #list==0 then  return  "📛*¦* لا يوجد ادمن في هذه المجموعه \n❕" end
+if #list==0 then  return  "♦️*┇* لا يوجد ادمن في هذه المجموعه \n❕" end
 message = '📋*¦ قائمه الادمنيه :*\n\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
@@ -724,7 +724,7 @@ end
 
 function whitelist(msg)
 local list = redis:smembers(boss..'whitelist:'..msg.chat_id_)
-if #list == 0 then return "*📛¦ لا يوجد مميزين في القائمه *" end
+if #list == 0 then return "*♦️┇لا يوجد مميزين في القائمه *" end
 message = '📋*¦* قائمه الاعضاء المميزين :\n'   
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
@@ -751,8 +751,8 @@ end
 
 function MuteUser_list(msg)
 local list = redis:smembers(boss..'is_silent_users:'..msg.chat_id_)
-if #list==0 then return "📋*¦*  لايوجد اعضاء مكتومين " end
-message = '📋*¦*  قائمه الاعضاء المكتومين :\n'
+if #list==0 then return "📋*┇*لايوجد اعضاء مكتومين " end
+message = '📋*┇*قائمه الاعضاء المكتومين :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
@@ -779,8 +779,8 @@ end
 
 function GetListBanned(msg)
 local list = redis:smembers(boss..'banned:'..msg.chat_id_)
-if #list==0 then return "📋*¦* لايوجد أعضاء محظورين " end
-message = '📋*¦* قائمه الاعضاء المحظورين :\n'
+if #list==0 then return "📋*┇*لايوجد أعضاء محظورين " end
+message = '📋*┇*قائمه الاعضاء المحظورين :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
@@ -807,8 +807,8 @@ end
 
 function GetListGeneralBanned(msg)
 local list = redis:smembers(boss..'gban_users')
-if #list==0 then return  "*📛¦ لايوجد اعضاء محظورين عام*" end
-message = '🛠*¦* قائمه المحظورين عام :\n'
+if #list==0 then return  "*♦️┇ لايوجد اعضاء محظورين عام*" end
+message = '🛠*┇*قائمه المحظورين عام :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(boss..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
@@ -846,8 +846,8 @@ end
 
 function FilterXList(msg)
 local list = redis:smembers(boss..':Filter_Word:'..msg.chat_id_)
-if #list == 0 then return "🛠*¦* قائمه الكلمات الممنوعه فارغه" end
-filterlist = '🛠*¦* قائمه الكلمات الممنوعه :\n'    
+if #list == 0 then return "🛠*┇*قائمه الكلمات الممنوعه فارغه" end
+filterlist = '🛠*┇*قائمه الكلمات الممنوعه :\n'    
 for k,v in pairs(list) do
 filterlist = filterlist..'*'..k..'* -  '..Flter_Markdown(v)..'\n'
 end 
@@ -856,19 +856,19 @@ end
 
 function AddFilter(msg, word)
 if redis:sismember(boss..':Filter_Word:'..msg.chat_id_,word) then 
-return  "📝*¦* الكلمه *{"..word.."}* هي بالتأكيد من قائمه المنع✓️" 
+return  "📝*┇*الكلمه *{"..word.."}* هي بالتأكيد من قائمه المنع✓️" 
 else
 redis:sadd(boss..':Filter_Word:'..msg.chat_id_,word) 
-return  "📝*¦* الكلمه *{"..word.."}* تمت اضافتها الى قائمه المنع ✓️"
+return  "📝*┇*الكلمه *{"..word.."}* تمت اضافتها الى قائمه المنع ✓️"
 end
 end
 
 function RemFilter(msg, word)
 if redis:sismember(boss..':Filter_Word:'..msg.chat_id_,word) then 
 redis:srem(boss..':Filter_Word:'..msg.chat_id_,word) 
-return  "📝*¦* الكلمه *{"..word.."}* تم السماح بها ✓️" 
+return  "📝*┇*الكلمه *{"..word.."}* تم السماح بها ✓️" 
 else
-return  "📝*¦* الكلمه *{"..word.."}* هي بالتأكيد مسموح بها✓️" 
+return  "📝*┇*الكلمه *{"..word.."}* هي بالتأكيد مسموح بها✓️" 
 end
 end
 
@@ -971,7 +971,7 @@ end
 
 function chat_list(msg)
 local list = redis:smembers(boss..'group:ids')
-message = '📋*¦* قائمه المجموعات :\n\n'
+message = '📋*┇*قائمه المجموعات :\n\n'
 for k,v in pairs(list) do 
 local info = redis:get(boss..'group:name'..v)
 if info then 
@@ -983,7 +983,7 @@ else
 message = message..k.. 'ـ '..' ☜ •⊱ { `' ..v.. '` } ⊰• \n'
 end 
 end
-all_groups = '📋¦ قائمه المجموعات :<br><br>'
+all_groups = '📋┇قائمه المجموعات :<br><br>'
 for k,v in pairs(list) do 
 local info = redis:get(boss..'group:name'..v)
 if info then
@@ -994,7 +994,7 @@ end
 end
 
 if utf8.len(message) > 4096 then
-sendMsg(msg.chat_id_,1,'🚸*¦* عذرا لديك الكثير من المجموعات\n👨🏽‍💻*¦* سوف ارسل لك ملف فيها قائمه مجموعات المفعله انتظر لحظه ...')
+sendMsg(msg.chat_id_,1,'🚸*┇*عذرا لديك الكثير من المجموعات\n👨🏽‍💻*┇*سوف ارسل لك ملف فيها قائمه مجموعات المفعله انتظر لحظه ...')
 file = io.open("./inc/All_Groups.html", "w")
 file:write([[
 <html dir="rtl">
@@ -1015,7 +1015,7 @@ file:write([[
 </html>
 ]])
 file:close()
-return sendDocument(msg.chat_id_,msg.id_,'./inc/All_Groups.html','👨🏽‍✈️¦ قائمه المجموعات بالكامله ✓ \n🗃¦ يحتوي ('..#list..') مجموعه \n🖥¦افتح الملف في عارض HTML او بالمتصفح',dl_cb,nil)
+return sendDocument(msg.chat_id_,msg.id_,'./inc/All_Groups.html','👨🏽‍✈️┇قائمه المجموعات بالكامله ✓ \n🗃┇يحتوي ('..#list..') مجموعه \n🖥┇افتح الملف في عارض HTML او بالمتصفح',dl_cb,nil)
 else 
 return sendMsg(msg.chat_id_,1,message) 
 end 
@@ -1062,9 +1062,9 @@ end,nil)
 end
 end
 if NumAdmin == 0 then 
-return sendMsg(msg.chat_id_,msg.id_,"📮¦ لا يـوجـد أدمـنـيـه لكي يتـم رفعهم \n")
+return sendMsg(msg.chat_id_,msg.id_,"♦️┇لا يـوجـد أدمـنـيـه لكي يتـم رفعهم \n")
 else
-return sendMsg(msg.chat_id_,msg.id_,"📮¦ تم رفع  { *"..NumAdmin.."* } مـن آلآدمـنيهہ‌‏ في آلبوت \n✓️")
+return sendMsg(msg.chat_id_,msg.id_,"♦️┇تم رفع  { *"..NumAdmin.."* } مـن آلآدمـنيهہ‌‏ في آلبوت \n✓️")
 end
 end,100)
 end
@@ -1080,10 +1080,10 @@ else
 service = false
 Get_Director = 1
 end 
-if not msg.SudoUser and not service then return '🚸¦ أنـت لـسـت الـمـطـور ⚙️' end
-if msg.is_post_ then return "🚸¦ عذرا هذا بوت حمايه المجموعات وليس القنوات  " end
-if msg.type ~= "channel" then return '🚸¦ لا يمكنك تفعيل البوت في المجوعات العاديه / البوت يدعم فقط المجموعات الخارقه ⚙️' end
-if redis:get(boss..'group:add'..msg.chat_id_) then  return '🎗*¦* المجموعه بالتأكيد ✓️ تم تفعيلها' end
+if not msg.SudoUser and not service then return '🚸┊أنـت لـسـت الـمـطـور ⚙️' end
+if msg.is_post_ then return "🚸┊عذرا هذا بوت حمايه المجموعات وليس القنوات  " end
+if msg.type ~= "channel" then return '🚸┊لا يمكنك تفعيل البوت في المجوعات العاديه / البوت يدعم فقط المجموعات الخارقه ⚙️' end
+if redis:get(boss..'group:add'..msg.chat_id_) then  return '🎗*┊*المجموعه بالتأكيد ✓️ تم تفعيلها' end
 
 local UserChaneel = redis:get(boss..":UserNameChaneel")
 if UserChaneel and not msg.SudoBase then
@@ -1092,10 +1092,10 @@ if res == 200 then
 print(url) 
 local Req = JSON.decode(url)
 if Req.ok and Req.result and Req.result.status == "left" or Req.result.status == "kicked" then
-return "🚸| آشـترگ بآلقنآ‌‏هہ آولآ ["..UserChaneel.."] \n🔛| ثم آرجع آرسـل تفعيل ."
+return "🚸┊آشـترگ بآلقنآ‌‏هہ آولآ ["..UserChaneel.."] \n🔛┊ثم آرجع آرسـل تفعيل ."
 end
 else
-return "🚸| آشـترگ بآلقنآ‌‏هہ آولآ ["..UserChaneel.."] \n🔛| ثم آرجع آرسـل تفعيل ."
+return "🚸┊آشـترگ بآلقنآ‌‏هہ آولآ ["..UserChaneel.."] \n🔛┊ثم آرجع آرسـل تفعيل ."
 end
 end
  
@@ -1104,7 +1104,7 @@ GetFullChat(msg.chat_id_,function(arg,data)
 local GroupUsers = tonumber(redis:get(boss..':addnumberusers') or 0)
 local Groupcount = tonumber(data.member_count_)
 if GroupUsers  >= Groupcount and not msg.SudoBase then
-return sendMsg(msg.chat_id_,msg.id_,'🚸*¦* لآ يمـگنني تفعيل آلبوت في آلمـجمـوعهہ‏ يجب آن يگون آگثر مـن *【'..GroupUsers..'】* عضـو 👤')
+return sendMsg(msg.chat_id_,msg.id_,'🚸*┊*لآ يمـگنني تفعيل آلبوت في آلمـجمـوعهہ‏ يجب آن يگون آگثر مـن *【'..GroupUsers..'】* عضـو 👤')
 else 
 GetChatMember(msg.chat_id_,our_id,function(arg,data)
 if data.status_.ID == "ChatMemberStatusMember" then
@@ -1172,14 +1172,14 @@ USERNAME_T = '🎟*┊*الـمعرف ❪ @['..datai.username_..'] ❫\n'
 else 
 USERNAME_T = ''
 end
-return send_msg(SUDO_ID,'🙋🏻‍♂*┊* هلا عزيزي المطور قام شخص بتفعيل البوت ...\n\nــــــــــــــــــــــــــــــــــــــــــ\n📑┊معلومات المجموعه\n'
+return send_msg(SUDO_ID,'⚜*┊* تــــم تــفــعــيــل الـــبـــوت ...\n\nــــــــــــــــــــــــــــــــــــــــــ\n📑┊معلومات المجموعه\n'
 ..'🗯┊اسم المجموعه ❪ ['..NameGroup..']('..Gp_Link..') ❫\n'
 ..'📛┊ايدي المجموعه ❪ `'..msg.chat_id_..'` ❫\n'
 ..'🙋🏻‍♂┊عدد اعضاء المجموعه ❪ *'..Groupcount..'* ❫ \nــــــــــــــــــــــــــــــــــــــــــ\n⚖️┊معلومات الشخص الي ضافني \n'
-..'👨🏽‍💻*┊*الاسـم ❪ ['..FlterName(datai.first_name_..' '..(datai.last_name_ or ""),23)..'](tg://user?id='..msg.sender_user_id_..') ❫\n\n'
-..USERNAME_T..'📆┊تاريخ التفعيل ❪* '..os.date("%Y/%m/%d")
+..'👨🏽‍💻*┊*الاسـم ❪ ['..FlterName(datai.first_name_..' '..(datai.last_name_ or ""),23)..'](tg://user?id='..msg.sender_user_id_..') ❫\n'
+..USERNAME_T..'\n📆┊تاريخ التفعيل ❪* '..os.date("%Y/%m/%d")
 ..' *❫\n⏱┊الساعه ❪* '..os.date("%I:%M%p")..' *❫')
-end,nil) 
+end,nil)
 end
 end)
 end,Get_Director) 
