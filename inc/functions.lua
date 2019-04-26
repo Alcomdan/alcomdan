@@ -1347,7 +1347,7 @@ return SendMention(ChatID,UserID,MsgID,'🙍🏻‍♂┇العضو » ❪ '..US
 end
 
 if cmd == "iduser" then
-return SendMention(ChatID,UserID,MsgID,"🧟‍♂¦ آضـغط على آلآيدي ليتم آلنسـخ\n\n "..USERNAME.." ~⪼ { "..UserID.." }",37,USERCAR)
+return SendMention(ChatID,UserID,MsgID,"🧟‍♂┇آضـغط على آلآيدي ليتم آلنسـخ\n\n🎫┇معرفك ⇜ "..USERNAME.."\n🎟┇ايديك ⇜ ❪ "..UserID.." ❫",90,USERCAR)
 end
 if cmd == "whois" then
 local namei = data.first_name_..' '..(data.last_name_ or "")
@@ -1689,7 +1689,7 @@ return sendMsg(ChatID,MsgID,'🙍🏻‍♂*┇*العضو » ❪ '..UserName..'
 end
 
 if cmd == "iduser" then
-return sendMsg(ChatID,MsgID,"🧟‍♂*¦* آضـغط على آلآيدي ليتم آلنسـخ\n\n "..UserName.." ~⪼ ( `"..UserID.."` )")
+return sendMsg(ChatID,MsgID,"🧟‍♂*┇*آضـغط على آلآيدي ليتم آلنسـخ\n\n🎫┇معرفك ⇜ "..UserName.."\n🎟┇ايديك ⇜ ❪ `"..UserID.."` ❫")
 end
 
 if cmd == "whois" then
