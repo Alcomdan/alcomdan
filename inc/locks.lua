@@ -10,58 +10,58 @@
 ---------------Lock ------------------- 
 function unlock_waring(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if redis:get(boss..'lock_woring'..msg.chat_id_) then 
+if redis:get(max..'lock_woring'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.." \n📡*¦* التحذير مفعل مسبقاً \n✓" 
-else redis:set(boss..'lock_woring'..msg.chat_id_,true)
+else redis:set(max..'lock_woring'..msg.chat_id_,true)
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تفعيل التحذير \n✓" 
 end
 end
  
 function lock_waring(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if not redis:get(boss..'lock_woring'..msg.chat_id_) then 
+if not redis:get(max..'lock_woring'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* التحذير بالتأكيد معطل\n✓" 
 else
-redis:del(boss..'lock_woring'..msg.chat_id_) 
+redis:del(max..'lock_woring'..msg.chat_id_) 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تعطيل التحذير \n✓" 
 end 
 end
 
 function lock_ID(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if not redis:get(boss..'lock_id'..msg.chat_id_) then 
+if not redis:get(max..'lock_id'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* الايدي بالتأكيد معطل\n✓" 
 else
-redis:del(boss..'lock_id'..msg.chat_id_) 
+redis:del(max..'lock_id'..msg.chat_id_) 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تعطيل امر الايدي\n✓" 
 end 
 end
 
 function unlock_ID(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if redis:get(boss..'lock_id'..msg.chat_id_) then 
+if redis:get(max..'lock_id'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* امر الايدي شغال بالفعل\n✓" 
 else 
-redis:set(boss..'lock_id'..msg.chat_id_,true)  
+redis:set(max..'lock_id'..msg.chat_id_,true)  
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تفعيل امر الايدي \n✓" 
 end 
 end
 
 function unlock_Welcome(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if redis:get(boss..'welcome:get'..msg.chat_id_) then 
+if redis:get(max..'welcome:get'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تفعيل الترحيب مفعل مسبقاً\n✓" 
-else redis:set(boss..'welcome:get'..msg.chat_id_,true)  
+else redis:set(max..'welcome:get'..msg.chat_id_,true)  
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تفعيل الترحيب \n✓" 
 end 
 end
 
 function lock_Welcome(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
-if not redis:get(boss..'welcome:get'..msg.chat_id_) then 
+if not redis:get(max..'welcome:get'..msg.chat_id_) then 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* الترحيب بالتأكيد معطل\n✓" 
 else
-redis:del(boss..'welcome:get'..msg.chat_id_) 
+redis:del(max..'welcome:get'..msg.chat_id_) 
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم تعطيل الترحيب \n✓" 
 end 
 end
@@ -69,24 +69,24 @@ end
 function lock_All(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
 redis:mset(
-boss..'lock_username'..msg.chat_id_,true,
-boss..'mute_gif'..msg.chat_id_,true,
-boss..'mute_photo'..msg.chat_id_,true,
-boss..'mute_audio'..msg.chat_id_,true,
-boss..'mute_voice'..msg.chat_id_,true,
-boss..'mute_sticker'..msg.chat_id_,true,
-boss..'mute_forward'..msg.chat_id_,true,
-boss..'mute_contact'..msg.chat_id_,true,
-boss..'mute_location'..msg.chat_id_,true,
-boss..'mute_document'..msg.chat_id_,true,
-boss..'lock_link'..msg.chat_id_,true,
-boss..'lock_tag'..msg.chat_id_,true,
-boss..'lock_edit'..msg.chat_id_,true,
-boss..'lock_spam'..msg.chat_id_,true,
-boss..'lock_bots'..msg.chat_id_,true,
-boss..'lock_webpage'..msg.chat_id_,true,
-boss..'mute_video'..msg.chat_id_,true,
-boss..'mute_inline'..msg.chat_id_,true
+max..'lock_username'..msg.chat_id_,true,
+max..'mute_gif'..msg.chat_id_,true,
+max..'mute_photo'..msg.chat_id_,true,
+max..'mute_audio'..msg.chat_id_,true,
+max..'mute_voice'..msg.chat_id_,true,
+max..'mute_sticker'..msg.chat_id_,true,
+max..'mute_forward'..msg.chat_id_,true,
+max..'mute_contact'..msg.chat_id_,true,
+max..'mute_location'..msg.chat_id_,true,
+max..'mute_document'..msg.chat_id_,true,
+max..'lock_link'..msg.chat_id_,true,
+max..'lock_tag'..msg.chat_id_,true,
+max..'lock_edit'..msg.chat_id_,true,
+max..'lock_spam'..msg.chat_id_,true,
+max..'lock_bots'..msg.chat_id_,true,
+max..'lock_webpage'..msg.chat_id_,true,
+max..'mute_video'..msg.chat_id_,true,
+max..'mute_inline'..msg.chat_id_,true
 )
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم قفل الكل  \n✓"
 end
@@ -94,29 +94,29 @@ end
 function Unlock_All(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
 redis:del(
-boss..'lock_username'..msg.chat_id_,
-boss..'mute_gif'..msg.chat_id_,
-boss..'mute_photo'..msg.chat_id_,
-boss..'mute_audio'..msg.chat_id_,
-boss..'mute_voice'..msg.chat_id_,
-boss..'mute_sticker'..msg.chat_id_,
-boss..'mute_forward'..msg.chat_id_,
-boss..'mute_contact'..msg.chat_id_,
-boss..'mute_location'..msg.chat_id_,
-boss..'mute_document'..msg.chat_id_,
-boss..'lock_link'..msg.chat_id_,
-boss..'lock_tag'..msg.chat_id_,
-boss..'lock_edit'..msg.chat_id_,
-boss..'lock_spam'..msg.chat_id_,
-boss..'lock_bots'..msg.chat_id_,
-boss..'lock_webpage'..msg.chat_id_,
-boss..'mute_video'..msg.chat_id_,
-boss..':tqeed_video:'..msg.chat_id_,
-boss..':tqeed_photo:'..msg.chat_id_,
-boss..':tqeed_gif:'..msg.chat_id_,
-boss..':tqeed_fwd:'..msg.chat_id_,
-boss..':tqeed_link:'..msg.chat_id_,
-boss..'mute_inline'..msg.chat_id_
+max..'lock_username'..msg.chat_id_,
+max..'mute_gif'..msg.chat_id_,
+max..'mute_photo'..msg.chat_id_,
+max..'mute_audio'..msg.chat_id_,
+max..'mute_voice'..msg.chat_id_,
+max..'mute_sticker'..msg.chat_id_,
+max..'mute_forward'..msg.chat_id_,
+max..'mute_contact'..msg.chat_id_,
+max..'mute_location'..msg.chat_id_,
+max..'mute_document'..msg.chat_id_,
+max..'lock_link'..msg.chat_id_,
+max..'lock_tag'..msg.chat_id_,
+max..'lock_edit'..msg.chat_id_,
+max..'lock_spam'..msg.chat_id_,
+max..'lock_bots'..msg.chat_id_,
+max..'lock_webpage'..msg.chat_id_,
+max..'mute_video'..msg.chat_id_,
+max..':tqeed_video:'..msg.chat_id_,
+max..':tqeed_photo:'..msg.chat_id_,
+max..':tqeed_gif:'..msg.chat_id_,
+max..':tqeed_fwd:'..msg.chat_id_,
+max..':tqeed_link:'..msg.chat_id_,
+max..'mute_inline'..msg.chat_id_
 )
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n📡*¦* تم فتح الكل  \n✓"
 end
@@ -124,12 +124,12 @@ end
 function lock_Media(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
 redis:mset(
-boss..'mute_gif'..msg.chat_id_,true,
-boss..'mute_photo'..msg.chat_id_,true,
-boss..'mute_audio'..msg.chat_id_,true,
-boss..'mute_voice'..msg.chat_id_,true,
-boss..'mute_sticker'..msg.chat_id_,true,
-boss..'mute_video'..msg.chat_id_,true
+max..'mute_gif'..msg.chat_id_,true,
+max..'mute_photo'..msg.chat_id_,true,
+max..'mute_audio'..msg.chat_id_,true,
+max..'mute_voice'..msg.chat_id_,true,
+max..'mute_sticker'..msg.chat_id_,true,
+max..'mute_video'..msg.chat_id_,true
 )
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n🔛¦ تم قفل الوسائط  \n✓"
 end
@@ -137,33 +137,33 @@ end
 function Unlock_Media(msg)
 if not msg.Admin then return "📛*¦* هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n🚶" end
 redis:del(
-boss..'mute_gif'..msg.chat_id_,
-boss..'mute_photo'..msg.chat_id_,
-boss..'mute_audio'..msg.chat_id_,
-boss..'mute_voice'..msg.chat_id_,
-boss..'mute_sticker'..msg.chat_id_,
-boss..'mute_video'..msg.chat_id_
+max..'mute_gif'..msg.chat_id_,
+max..'mute_photo'..msg.chat_id_,
+max..'mute_audio'..msg.chat_id_,
+max..'mute_voice'..msg.chat_id_,
+max..'mute_sticker'..msg.chat_id_,
+max..'mute_video'..msg.chat_id_
 )
 return "🙋🏼‍♂️*¦* أهلا عزيزي "..msg.TheRankCmd.."\n🔛¦ تم فتح الوسائط  \n✓"
 end
 
 function tqeed_photo(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_photo:'..msg.chat_id_) then
+if redis:get(max..':tqeed_photo:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالصور بالتأكيد تم قفله \n✓'
 else
-redis:del(boss..'mute_photo'..msg.chat_id_)
-redis:set(boss..':tqeed_photo:'..msg.chat_id_,true)
+redis:del(max..'mute_photo'..msg.chat_id_)
+redis:set(max..':tqeed_photo:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الصور بالتقييد  \n✓'
 end
 end
 
 function fktqeed_photo(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(boss..':tqeed_photo:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_photo:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالصور بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_photo:'..msg.chat_id_)
+redis:del(max..':tqeed_photo:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الصور بالتقييد \n✓'
 end
 end
@@ -171,21 +171,21 @@ end
 ---------------Lock -------------------
 function tqeed_video(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_video:'..msg.chat_id_) then
+if redis:get(max..':tqeed_video:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالفيديو بالتأكيد تم قفله \n✓'
 else
-redis:del(boss..':tqeed_video:'..msg.chat_id_)
-redis:set(boss..':tqeed_video:'..msg.chat_id_,true)
+redis:del(max..':tqeed_video:'..msg.chat_id_)
+redis:set(max..':tqeed_video:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الفيديو بالتقييد  \n✓'
 end
 end
 
 function fktqeed_video(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(boss..':tqeed_video:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_video:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالفيديو بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_video:'..msg.chat_id_)
+redis:del(max..':tqeed_video:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الفيديو بالتقييد \n✓'
 end
 end
@@ -193,21 +193,21 @@ end
 ---------------Lock -------------------
 function tqeed_gif(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_gif:'..msg.chat_id_) then
+if redis:get(max..':tqeed_gif:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد الممتحركه بالتأكيد تم قفله \n✓'
 else
-redis:del(boss..'mute_gif'..msg.chat_id_)
-redis:set(boss..':tqeed_gif:'..msg.chat_id_,true)
+redis:del(max..'mute_gif'..msg.chat_id_)
+redis:set(max..':tqeed_gif:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل المتحركه بالتقييد  \n✓'
 end
 end
 
 function fktqeed_gif(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n??" end
-if not redis:get(boss..':tqeed_gif:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_gif:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد المتحركه بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_gif:'..msg.chat_id_)
+redis:del(max..':tqeed_gif:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح المتحركه بالتقييد \n✓'
 end
 end
@@ -215,21 +215,21 @@ end
 ---------------Lock -------------------
 function tqeed_fwd(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_fwd:'..msg.chat_id_) then
+if redis:get(max..':tqeed_fwd:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالتوجيه بالتأكيد تم قفله \n✓'
 else
-redis:del(boss..'mute_forward'..msg.chat_id_)
-redis:set(boss..':tqeed_fwd:'..msg.chat_id_,true)
+redis:del(max..'mute_forward'..msg.chat_id_)
+redis:set(max..':tqeed_fwd:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل التوجيه بالتقييد  \n✓'
 end
 end
 
 function fktqeed_fwd(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(boss..':tqeed_fwd:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_fwd:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد التوجيه بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_fwd:'..msg.chat_id_)
+redis:del(max..':tqeed_fwd:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح التوجيه بالتقييد \n✓'
 end
 end
@@ -237,20 +237,20 @@ end
 ---------------Lock -------------------
 function tqeed_link(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_link:'..msg.chat_id_) then
+if redis:get(max..':tqeed_link:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالروابط بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..':tqeed_link:'..msg.chat_id_,true)
+redis:set(max..':tqeed_link:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الروابط بالتقييد  \n✓'
 end
 end
 
 function fktqeed_link(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(boss..':tqeed_link:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_link:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالروابط بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_link:'..msg.chat_id_)
+redis:del(max..':tqeed_link:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الروابط بالتقييد \n✓'
 end
 end
@@ -258,40 +258,40 @@ end
 ---------------Lock -------------------
 function tqeed_photo(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if redis:get(boss..':tqeed_photo:'..msg.chat_id_) then
+if redis:get(max..':tqeed_photo:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالصور بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..':tqeed_photo:'..msg.chat_id_,true)
+redis:set(max..':tqeed_photo:'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الصور بالتقييد  \n✓'
 end
 end
 
 function fktqeed_photo(msg)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(boss..':tqeed_photo:'..msg.chat_id_) then
+if not redis:get(max..':tqeed_photo:'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التقييد بالصور بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..':tqeed_photo:'..msg.chat_id_)
+redis:del(max..':tqeed_photo:'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الصور بالتقييد \n✓'
 end
 end
 ---------------Lock twasel-------------------
 function lock_twasel(msg)
 if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
-if redis:get(boss..'lock_twasel') then
+if redis:get(max..'lock_twasel') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التواصل بالتاكيد تم تعطيله \n✓'
 else
-redis:set(boss..'lock_twasel',true)
+redis:set(max..'lock_twasel',true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تعطيل التواصل  \n✓'
 end
 end
 
 function unlock_twasel(msg)
 if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
-if not redis:get(boss..'lock_twasel') then
+if not redis:get(max..'lock_twasel') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التواصل بالتاكيد تم تفعيله \n✓'
 else 
-redis:del(boss..'lock_twasel')
+redis:del(max..'lock_twasel')
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تفعيل التواصل \n✓'
 end
 end
@@ -299,19 +299,19 @@ end
 ---------------Lock bro-------------------
 function lock_brod(msg)
 if not msg.SudoBase then return "📡*¦* هذا الامر يخص المطور فقط  🚶" end
-if not redis:get(boss..'lock_brod') then
+if not redis:get(max..'lock_brod') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* اذاعه المطورين بالتاكيد تم تعطيله \n✓'
 else
-redis:del(boss..'lock_brod')
+redis:del(max..'lock_brod')
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تعطيل اذاعه المطورين  \n✓'
 end
 end
 function unlock_brod(msg)
 if not msg.SudoBase then return "📡*¦* هذا الامر يخص المطور فقط  🚶" end
-if redis:get(boss..'lock_brod') then
+if redis:get(max..'lock_brod') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* اذاعه المطورين بالتاكيد تم تفعيله \n✓'
 else 
-redis:set(boss..'lock_brod',true)
+redis:set(max..'lock_brod',true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تفعيل اذاعه المطورين  \n✓'
 end
 end
@@ -319,20 +319,20 @@ end
 ---------------Lock replay-------------------
 function lock_replay(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'replay'..msg.chat_id_) then
+if not redis:get(max..'replay'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الردود بالتاكيد تم تعطيله \n✓'
 else
-redis:del(boss..'replay'..msg.chat_id_)
+redis:del(max..'replay'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تعطيل الردود  \n✓'
 end
 end
 
 function unlock_replay(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'replay'..msg.chat_id_) then
+if redis:get(max..'replay'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الردود بالتاكيد تم تفعيله \n✓'
 else 
-redis:set(boss..'replay'..msg.chat_id_,true)
+redis:set(max..'replay'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تفعيل الردود  \n✓'
 end
 end
@@ -340,20 +340,20 @@ end
 ---------------Lock bot service-------------------
 function lock_service(msg)
 if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
-if not redis:get(boss..'lock_service') then
+if not redis:get(max..'lock_service') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم بالتاكيد تعطيل نظام البوت خدمي \n✓'
 else
-redis:del(boss..'lock_service')
+redis:del(max..'lock_service')
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم  تعطيل نظام البوت خدمي \n✓'
 end
 end
 
 function unlock_service(msg)
 if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
-if redis:get(boss..'lock_service') then
+if redis:get(max..'lock_service') then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم بالتأكيد تفعيل نظام البوت خدمي \n✓'
 else 
-redis:set(boss..'lock_service',true)
+redis:set(max..'lock_service',true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم تفعيل نظام البوت خدمي \n✓\n🚸¦ اصبح البوت الان بامكان اي شخص\n🔚¦ ان يستخدم البوت للتفعيل'
 end
 end
@@ -361,20 +361,20 @@ end
 ---------------Lock Link-------------------
 function lock_link(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_link'..msg.chat_id_) then
+if redis:get(max..'lock_link'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الروابط بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'lock_link'..msg.chat_id_,true)
+redis:set(max..'lock_link'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الروابط \n✓'
 end
 end
 
 function unlock_link(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_link'..msg.chat_id_) then
+if not redis:get(max..'lock_link'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الروابط بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'lock_link'..msg.chat_id_)
+redis:del(max..'lock_link'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الروابط \n✓'
 end
 end
@@ -382,10 +382,10 @@ end
 ---------------Lock Tag-------------------
 function lock_tag(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_tag'..msg.chat_id_) then
+if redis:get(max..'lock_tag'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التاك (#) بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_tag'..msg.chat_id_,true)
+redis:set(max..'lock_tag'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل التاك (#) \n✓'
 end
 end
@@ -393,10 +393,10 @@ end
 function unlock_tag(msg)
 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_tag'..msg.chat_id_) then
+if not redis:get(max..'lock_tag'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التاك(#) بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'lock_tag'..msg.chat_id_)
+redis:del(max..'lock_tag'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح التاك (#) \n✓'
 end
 end
@@ -405,20 +405,20 @@ function lock_username(msg)
 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
 
-if redis:get(boss..'lock_username'..msg.chat_id_) then
+if redis:get(max..'lock_username'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* المعرفات @ بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_username'..msg.chat_id_,true)
+redis:set(max..'lock_username'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل المعرفات @ \n✓'
 end
 end
 
 function unlock_username(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_username'..msg.chat_id_) then
+if not redis:get(max..'lock_username'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* آلمـعرفآت بآلتآگيد تم فتحهآ @ \n✓'
 else 
-redis:del(boss..'lock_username'..msg.chat_id_)
+redis:del(max..'lock_username'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح آلمـعرفآت @ \n✓'
 end
 end
@@ -426,20 +426,20 @@ end
 ---------------Lock Edit-------------------
 function lock_edit(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_edit'..msg.chat_id_) then
+if redis:get(max..'lock_edit'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التعديل بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_edit'..msg.chat_id_,true)
+redis:set(max..'lock_edit'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل التعديل \n✓'
 end
 end
 
 function unlock_edit(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_edit'..msg.chat_id_) then
+if not redis:get(max..'lock_edit'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التعديل بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'lock_edit'..msg.chat_id_)
+redis:del(max..'lock_edit'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح التعديل \n✓'
 end
 end
@@ -447,20 +447,20 @@ end
 ---------------Lock spam-------------------
 function lock_spam(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if   redis:get(boss..'lock_spam'..msg.chat_id_) then
+if   redis:get(max..'lock_spam'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الكلايش بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'lock_spam'..msg.chat_id_,true)
+redis:set(max..'lock_spam'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الكلايش \n✓'
 end
 end
 
 function unlock_spam(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_spam'..msg.chat_id_) then
+if not redis:get(max..'lock_spam'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الكلايش بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'lock_spam'..msg.chat_id_)
+redis:del(max..'lock_spam'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الكلايش \n✓'
 end
 end
@@ -468,20 +468,20 @@ end
 ---------------Lock Flood-------------------
 function lock_flood(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_flood'..msg.chat_id_) then
+if redis:get(max..'lock_flood'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التكرار بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_flood'..msg.chat_id_,true)
+redis:set(max..'lock_flood'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل التكرار \n✓'
 end
 end
 
 function unlock_flood(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_flood'..msg.chat_id_) then
+if not redis:get(max..'lock_flood'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التكرار بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'lock_flood'..msg.chat_id_)
+redis:del(max..'lock_flood'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح التكرار \n✓'
 end
 end
@@ -489,21 +489,21 @@ end
 ---------------Lock Bots-------------------
 function lock_bots(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_bots'..msg.chat_id_) then
+if redis:get(max..'lock_bots'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البوتات بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'lock_bots'..msg.chat_id_,true)
+redis:set(max..'lock_bots'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل البوتات \n✓'
 end
 end
 
 function unlock_bots(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_bots'..msg.chat_id_) then
+if not redis:get(max..'lock_bots'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البوتات بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'lock_bots_by_kick'..msg.chat_id_)
-redis:del(boss..'lock_bots'..msg.chat_id_)
+redis:del(max..'lock_bots_by_kick'..msg.chat_id_)
+redis:del(max..'lock_bots'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح البوتات \n✓'
 end
 end
@@ -511,20 +511,20 @@ end
 ---------------Lock Join-------------------
 function lock_join(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_join'..msg.chat_id_) then
+if redis:get(max..'lock_join'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الاضافه بالتاكيد تم قفلها \n✓'
 else
-redis:set(boss..'lock_join'..msg.chat_id_,true)
+redis:set(max..'lock_join'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الاضافه \n✓'
 end
 end
 
 function unlock_join(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_join'..msg.chat_id_) then
+if not redis:get(max..'lock_join'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الاضافه بالتاكيد تم فتحها \n✓'
 else 
-redis:del(boss..'lock_join'..msg.chat_id_)
+redis:del(max..'lock_join'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الاضافه \n✓'
 end
 end
@@ -532,20 +532,20 @@ end
 ---------------Lock Markdown-------------------
 function lock_markdown(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_markdown'..msg.chat_id_) then
+if redis:get(max..'lock_markdown'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الماركدوان بالتاكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_markdown'..msg.chat_id_,true)
+redis:set(max..'lock_markdown'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الماركدوان \n✓'
 end
 end
 
 function unlock_markdown(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_markdown'..msg.chat_id_) then
+if not redis:get(max..'lock_markdown'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الماركدوان بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'lock_markdown'..msg.chat_id_)
+redis:del(max..'lock_markdown'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الماركدوان \n✓'
 end
 end
@@ -553,47 +553,47 @@ end
 ---------------Lock Webpage-------------------
 function lock_webpage(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_webpage'..msg.chat_id_) then
+if redis:get(max..'lock_webpage'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الويب بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_webpage'..msg.chat_id_,true)
+redis:set(max..'lock_webpage'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الويب \n✓'
 end
 end
 
 function unlock_webpage(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_webpage'..msg.chat_id_) then
+if not redis:get(max..'lock_webpage'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الويب بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'lock_webpage'..msg.chat_id_)
+redis:del(max..'lock_webpage'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الويب \n✓'
 end
 end
 ---------------Mute Gif-------------------
 function mute_gif(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_gif'..msg.chat_id_) then
+if redis:get(max..'mute_gif'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* المتحركه بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_gif'..msg.chat_id_,true)
+redis:set(max..'mute_gif'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل المتحركه \n✓'
 end
 end
 
 function unmute_gif(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_gif'..msg.chat_id_) then
+if not redis:get(max..'mute_gif'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* المتحركه بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_gif'..msg.chat_id_)
+redis:del(max..'mute_gif'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح المتحركه \n✓'
 end
 end
 ---------------Mute Game-------------------
 function mute_game(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_game'..msg.chat_id_) then
+if redis:get(max..'mute_game'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الالعاب بالتأكيد تم قفلها \n✓'
 else
 redis:set('mute_game'..msg.chat_id_,true)
@@ -603,130 +603,130 @@ end
 
 function unmute_game(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_game'..msg.chat_id_) then
+if not redis:get(max..'mute_game'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الألعاب بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_game'..msg.chat_id_)
+redis:del(max..'mute_game'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الألعاب \n✓'
 end
 end
 ---------------Mute Inline-------------------
 function mute_inline(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_inline'..msg.chat_id_) then
+if redis:get(max..'mute_inline'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الانلاين بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'mute_inline'..msg.chat_id_,true)
+redis:set(max..'mute_inline'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الانلاين \n✓'
 end
 end
 
 function unmute_inline(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_inline'..msg.chat_id_) then
+if not redis:get(max..'mute_inline'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الانلاين بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'mute_inline'..msg.chat_id_)
+redis:del(max..'mute_inline'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الانلاين \n✓'
 end
 end
 ---------------Mute Text-------------------
 function mute_text(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_text'..msg.chat_id_) then
+if redis:get(max..'mute_text'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الدرشه بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_text'..msg.chat_id_,true)
+redis:set(max..'mute_text'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الدردشه \n✓'
 end
 end
 
 function unmute_text(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_text'..msg.chat_id_) then
+if not redis:get(max..'mute_text'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الدردشه بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_text'..msg.chat_id_,true)
+redis:del(max..'mute_text'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الدردشه \n✓'
 end
 end
 ---------------Mute photo-------------------
 function mute_photo(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_photo'..msg.chat_id_) then
+if redis:get(max..'mute_photo'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الصور بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_photo'..msg.chat_id_,true)
+redis:set(max..'mute_photo'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الصور \n✓'
 end
 end
 
 function unmute_photo(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_photo'..msg.chat_id_)then
+if not redis:get(max..'mute_photo'..msg.chat_id_)then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الصور بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_photo'..msg.chat_id_)
+redis:del(max..'mute_photo'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الصور \n✓'
 end
 end
 ---------------Mute Video-------------------
 function mute_video(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_video'..msg.chat_id_) then
+if redis:get(max..'mute_video'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الفيديو بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_video'..msg.chat_id_,true)
+redis:set(max..'mute_video'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الفيديو \n✓'
 end
 end
 
 function unmute_video(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_video'..msg.chat_id_) then
+if not redis:get(max..'mute_video'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الفيديو يال��أكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_video'..msg.chat_id_)
+redis:del(max..'mute_video'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الفيديو \n✓'
 end
 end
 ---------------Mute Audio-------------------
 function mute_audio(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_audio'..msg.chat_id_) then
+if redis:get(max..'mute_audio'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البصمات بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_audio'..msg.chat_id_,true)
+redis:set(max..'mute_audio'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل البصمات \n✓'
 end
 end
 
 function unmute_audio(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_audio'..msg.chat_id_) then
+if not redis:get(max..'mute_audio'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البصمات بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_audio'..msg.chat_id_)
+redis:del(max..'mute_audio'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح البصمات \n✓'
 end
 end
 ---------------Mute Voice-------------------
 function mute_voice(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if   redis:get(boss..'mute_voice'..msg.chat_id_) then
+if   redis:get(max..'mute_voice'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الصوت بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'mute_voice'..msg.chat_id_,true)
+redis:set(max..'mute_voice'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الصوت \n✓'
 end
 end
 
 function unmute_voice(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_voice'..msg.chat_id_) then
+if not redis:get(max..'mute_voice'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الصوت بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'mute_voice'..msg.chat_id_)
+redis:del(max..'mute_voice'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الصوت \n✓'
 end
 end
@@ -735,120 +735,120 @@ function mute_sticker(msg)
 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
 
-if   redis:get(boss..'mute_sticker'..msg.chat_id_) then
+if   redis:get(max..'mute_sticker'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الملصقات بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_sticker'..msg.chat_id_,true)
+redis:set(max..'mute_sticker'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الملصقات \n✓'
 end
 end
 
 function unmute_sticker(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_sticker'..msg.chat_id_) then
+if not redis:get(max..'mute_sticker'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الملصقات بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_sticker'..msg.chat_id_)
+redis:del(max..'mute_sticker'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الملصقات \n✓'
 end
 end
 ---------------Mute Contact-------------------
 function mute_contact(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_contact'..msg.chat_id_) then
+if redis:get(max..'mute_contact'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* جهات الاتصال بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_contact'..msg.chat_id_,true)
+redis:set(max..'mute_contact'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل جهات الاتصال \n✓'
 end
 end
 
 function unmute_contact(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_contact'..msg.chat_id_) then
+if not redis:get(max..'mute_contact'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* جهات الاتصال بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_contact'..msg.chat_id_)
+redis:del(max..'mute_contact'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح جهات الاتصال \n✓'
 end
 end
 ---------------Mute Forward-------------------
 function mute_forward(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_forward'..msg.chat_id_) then
+if redis:get(max..'mute_forward'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التوجيه بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_forward'..msg.chat_id_,true)
+redis:set(max..'mute_forward'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل التوجيه \n✓'
 end
 end
 
 function unmute_forward(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_forward'..msg.chat_id_) then
+if not redis:get(max..'mute_forward'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التوجيه بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_forward'..msg.chat_id_)
+redis:del(max..'mute_forward'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح التوجيه \n✓'
 end
 end
 ---------------Mute Location-------------------
 function mute_location(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_location'..msg.chat_id_) then
+if redis:get(max..'mute_location'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الموقع بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'mute_location'..msg.chat_id_,true)
+redis:set(max..'mute_location'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الموقع \n✓'
 end
 end
 
 function unmute_location(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_location'..msg.chat_id_) then
+if not redis:get(max..'mute_location'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الموقع بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'mute_location'..msg.chat_id_)
+redis:del(max..'mute_location'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الموقع \n✓'
 end
 end
 ---------------Mute Document-------------------
 function mute_document(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_document'..msg.chat_id_) then
+if redis:get(max..'mute_document'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الملفات بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_document'..msg.chat_id_,true)
+redis:set(max..'mute_document'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الملفات \n✓'
 end
 end
 
 function unmute_document(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_document'..msg.chat_id_) then
+if not redis:get(max..'mute_document'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الملفات بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_document'..msg.chat_id_)
+redis:del(max..'mute_document'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الملفات \n✓'
 end
 end
 ---------------Mute TgService-------------------
 function mute_tgservice(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_tgservice'..msg.chat_id_) then
+if redis:get(max..'mute_tgservice'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الاشعارات بالتأكيد تم قفلها \n✓'
 else
-redis:set(boss..'mute_tgservice'..msg.chat_id_,true)
+redis:set(max..'mute_tgservice'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الاشعارات \n✓'
 end
 end
 
 function unmute_tgservice(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_tgservice'..msg.chat_id_) then
+if not redis:get(max..'mute_tgservice'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الاشعارات بالتأكيد تم فتحها \n✓'
 else 
-redis:del(boss..'mute_tgservice'..msg.chat_id_)
+redis:del(max..'mute_tgservice'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الاشعارات \n✓'
 end
 end
@@ -856,20 +856,20 @@ end
 ---------------Mute Keyboard-------------------
 function mute_keyboard(msg) 
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'mute_keyboard'..msg.chat_id_) then
+if redis:get(max..'mute_keyboard'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الكيبورد بالتأكيد تم قفله \n✓'
 else
-redis:set(boss..'mute_keyboard'..msg.chat_id_,true)
+redis:set(max..'mute_keyboard'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل الكيبورد \n✓'
 end
 end
 
 function unmute_keyboard(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'mute_keyboard'..msg.chat_id_) then
+if not redis:get(max..'mute_keyboard'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* الكيبورد بالتأكيد تم فتحه \n✓'
 else 
-redis:del(boss..'mute_keyboard'..msg.chat_id_)
+redis:del(max..'mute_keyboard'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح الكيبورد \n✓'
 end
 end
@@ -877,41 +877,41 @@ end
 ---------------lock_bots_by_kick-------------------
 function lock_bots_by_kick(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_bots_by_kick'..msg.chat_id_) then
+if redis:get(max..'lock_bots_by_kick'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البوتات بالطرد بالتاكيد تم قفله \n✓'
 else
-redis:set(boss..'lock_bots'..msg.chat_id_,true)
-redis:set(boss..'lock_bots_by_kick'..msg.chat_id_,true)
+redis:set(max..'lock_bots'..msg.chat_id_,true)
+redis:set(max..'lock_bots_by_kick'..msg.chat_id_,true)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم قفل البوتات بالطرد (مع طرد الي ضافه) \n✓'
 end
 end
 
 function unlock_bots_by_kick(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_bots_by_kick'..msg.chat_id_) then
+if not redis:get(max..'lock_bots_by_kick'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* البوتات بالطرد بالتاكيد مفتوحه \n✓'
 else 
-redis:del(boss..'lock_bots_by_kick'..msg.chat_id_)
+redis:del(max..'lock_bots_by_kick'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تم فتح البوتات بالطرد  \n✓'
 end
 end
 ---------------locks pin-------------------
 function lock_pin(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if redis:get(boss..'lock_pin'..msg.chat_id_) then
+if redis:get(max..'lock_pin'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التثبيت بالفعل مقفل \n✓'
 else
-redis:set(boss..'lock_pin'..msg.chat_id_,true) 
+redis:set(max..'lock_pin'..msg.chat_id_,true) 
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تـم قفل التثبيت \n✓'
 end
 end
 
 function unlock_pin(msg)
 if not msg.Admin then return "📡*¦* هذا الامر يخص الادمنيه فقط  🚶" end
-if not redis:get(boss..'lock_pin'..msg.chat_id_) then
+if not redis:get(max..'lock_pin'..msg.chat_id_) then
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* التثبيت بالفعل مفتوح \n✓'
 else 
-redis:del(boss..'lock_pin'..msg.chat_id_)
+redis:del(max..'lock_pin'..msg.chat_id_)
 return '🙋🏼‍♂️*¦* أهلا عزيزي '..msg.TheRankCmd..'\n📡*¦* تـم فتح التثبيت   \n✓'
 end
 end
