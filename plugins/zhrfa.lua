@@ -4,20 +4,20 @@
 #      ▇▇     ▇ @hlh313   ▇     ▇▇         ▄▇    ▄▄▄    ▇▄                             ▇▇ ▇▇
 #      ▇▇        ▇             ▇         ▇▇     ▄▇                            ▇▄                       ▇▇ ▇▇ ¦ Dev : @hlh313
 #      ▇▇           ▇       ▇            ▇▇   ▄▇ ¦ Dev : @hlh_313  ▇▄              ▇▇                 ▇▇
-#      ▇▇              ▇▇                ▇▇  ▄▇                                    ▇▄   ▇▇                                  ▇▇¦ Source TH3BOSS BY @hlh_313
+#      ▇▇              ▇▇                ▇▇  ▄▇                                    ▇▄   ▇▇                                  ▇▇¦ Source TH3max BY @hlh_313
 #---------------------------------------------------------------------
 ]]
 
 local function Zhrfa(msg,MsgText)
 if msg.type ~= "pv" then
 if MsgText[1] == "زخرفه" then
-redis:setex(boss..":ZhrfNow:"..msg.sender_user_id_,500,true)
+redis:setex(max..":ZhrfNow:"..msg.sender_user_id_,500,true)
 sendMsg(msg.chat_id_,msg.id_,"📑| حسننا , الان يمكنك ارسال الاسم 💯")    
 return false
 end
 
-if redis:get(boss..":ZhrfNow:"..msg.sender_user_id_) then
-redis:del(boss..":ZhrfNow:"..msg.sender_user_id_)
+if redis:get(max..":ZhrfNow:"..msg.sender_user_id_) then
+redis:del(max..":ZhrfNow:"..msg.sender_user_id_)
 if utf8.len(msg.text) > 300 then
 sendMsg(msg.chat_id_,msg.id_,"📛| لا يمكنك زخرفه اكثر من 20 حرف \n📑| ارسل امر زخرفه وحاول مجددا بحروف اقل")    
 return false
@@ -905,9 +905,9 @@ end
 end
 local function TextRes(msg)
 
-if msg.text and msg.type ~= "pv" and redis:get(boss..":ZhrfNow:"..msg.sender_user_id_) then
+if msg.text and msg.type ~= "pv" and redis:get(max..":ZhrfNow:"..msg.sender_user_id_) then
 Text = msg.text
-redis:del(boss..":ZhrfNow:"..msg.sender_user_id_)
+redis:del(max..":ZhrfNow:"..msg.sender_user_id_)
 if utf8.len(msg.text) > 300 then
 sendMsg(msg.chat_id_,msg.id_,"📛| لا يمكنك زخرفه اكثر من 300 حرف \n📑| ارسل امر زخرفه وحاول مجددا بحروف اقل")    
 return false
@@ -1793,11 +1793,11 @@ end
 end
 
 return {
-Boss = {
+max = {
 "^(زخرفه)$"
  },
- iBoss = Zhrfa,
- dBoss = TextRes,
+ imax = Zhrfa,
+ dmax = TextRes,
  }
  
  
