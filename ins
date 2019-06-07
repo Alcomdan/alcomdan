@@ -59,12 +59,12 @@ exit ;
 fi
 
 
-PKG_OK=`/usr/bin/dpkg-query --show --showformat='${db:Status-Status}\n' 'redis-server'`
+PKG_OK=`/usr/bin/dpkg-query --show --showformat='${db:Status-Status}\n' 'MAXBOT-server'`
 if [ "${PKG_OK}" == "installed" ]; then
 if [ "$1" == "-R" ] ; then
 GET_INSTALL="NO"
 else
-GET_INSTALL=$(redis-cli get TH3max_INSTALL)
+GET_INSTALL=$(MAXBOT-cli get TH3max_INSTALL)
 fi
 if [ "${GET_INSTALL}" == "Yes" ]; then
 echo -e "
@@ -95,21 +95,21 @@ sudo luarocks install luasocket
 echo -e "\x1B[01;90m\n¦ luasocket installing ...\n \x1B[0m"
 sudo luarocks install luasec
 sudo luarocks install luautf8
-echo -e "\x1B[01;90m\n¦ redis-lua installing ... \n\x1B[0m"
-sudo luarocks install redis-lua
+echo -e "\x1B[01;90m\n¦ MAXBOT-lua installing ... \n\x1B[0m"
+sudo luarocks install MAXBOT-lua
 echo -e "\x1B[01;90m\n¦ lua-cjson installing ... \n\x1B[0m"
 sudo  luarocks remove lua-cjson2
 sudo  luarocks remove lua-cjson
 sudo  apt-get install lua-cjson
 echo -e "\x1B[01;90m\n¦ Lua-cURL installing ...\n \x1B[0m"
 sudo luarocks install Lua-cURL
-echo -e "\x1B[01;90m\n¦ redis-server start ...\n \x1B[0m"
-sudo service redis-server start
+echo -e "\x1B[01;90m\n¦ MAXBOT-server start ...\n \x1B[0m"
+sudo service MAXBOT-server start
 sudo apt-get update -y
 echo -e "\x1B[01;90m\n¦  g++-4.7 -y c++-4.7 installing ... \n\x1B[0m"
 sudo apt-get install g++-4.7 -y c++-4.7
 echo -e "\x1B[01;90m\n¦ luasocket installing ...\n \x1B[0m"
-sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y curl -y htop -y
+sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git MAXBOT-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y curl -y htop -y
 echo -e "\x1B[01;90m\n¦ screen installing ... \n\x1B[0m"
 sudo apt-get install screen -y
 echo -e "\x1B[01;90m\n¦ libstdc++6 installing ... \n\x1B[0m"
