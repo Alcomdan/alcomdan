@@ -817,7 +817,7 @@ end
 
 
 if MsgText[1] == "كشف البوتات" then
-if not msg.Director then return "♦️*┇*هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n💥" end
+if not msg.Director then return "♦️*┇*هذا الامر يخص {المطور,المنشئ} فقط  \n💥" end
 tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''),
 filter_ ={ID= "ChannelMembersBots"},offset_ = 0,limit_ = 50},function(arg,data)
 local total = data.total_count_ or 0
