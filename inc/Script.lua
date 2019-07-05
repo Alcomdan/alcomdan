@@ -2413,7 +2413,7 @@ redis:del(max..'fwd:all'..msg.sender_user_id_)
 local pv = redis:smembers(max..'users')  
 local groups = redis:smembers(max..'group:ids')
 local allgp =  #pv + #groups
-if allgp >= 300 then
+if allgp >= 3000 then
 sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر التوجيه للمجموعات وللمشتركين ...')			
 end
 for i = 1, #pv do 
@@ -2442,7 +2442,7 @@ end
 if redis:get(max..'fwd:pv'..msg.sender_user_id_) then ---- استقبال رساله الاذاعه خاص
 redis:del(max..'fwd:pv'..msg.sender_user_id_)
 local pv = redis:smembers(max..'users')
-if #pv >= 300 then
+if #pv >= 3000 then
 sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر الرساله للمشتركين ...')			
 end
 local NumPvDel = 0
@@ -2466,7 +2466,7 @@ end
 if redis:get(max..'fwd:groups'..msg.sender_user_id_) then ---- استقبال رساله الاذاعه خاص
 redis:del(max..'fwd:groups'..msg.sender_user_id_)
 local groups = redis:smembers(max..'group:ids')
-if #groups >= 300 then
+if #groups >= 3000 then
 sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر الرساله للمجموعات ...')			
 end
 local NumGroupsDel = 0
@@ -2508,7 +2508,7 @@ redis:del(max..'fwd:'..msg.sender_user_id_)
 local pv = redis:smembers(max..'users')
 local groups = redis:smembers(max..'group:ids')
 local allgp =  #pv + #groups
-if allgp == 500 then
+if allgp == 3000 then
 sendMsg(msg.chat_id_,msg.id_,'📑┊اهلا عزيزي المطور \n🔖┊جاري نشر التوجيه للمجموعات وللمشتركين ...')			
 end
 local number = 0
