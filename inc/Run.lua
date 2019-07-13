@@ -71,7 +71,6 @@ print('\n\27[1;31m￤ This is Not USERNAME !\n￤هہ‏‏ذآ ليس مـعر�
 create_config(Token)
 end 
 local url , res = https.request('https://api.th3bs.com/GetUser/?User='..SUDO_USER)
-
 if res ~= 200 then
 print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
 create_config(Token)
@@ -89,6 +88,10 @@ end
 print('\n\27[1;31m￤ USERNAME is Incorrect Please Check it!\n￤ لآ يوجد حسـآب بهہ‏‏ذآ آلمـعرف , تآگد مـنهہ‏‏ جيدآ  !')
 create_config(Token)
 end  
+if GetUser.information.typeuser ~= "UserTypeGeneral" then
+print('\n\27[1;31m￤ This UserName is not personal account !\n￤عذرا يرجى ادخال معرف حساب شخصي ليكون مطور البوت وليس معرف قناة او بوت او مجموعة !')
+create_config(Token)
+end
 print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERNAME IS_ID: \27[0;32m['..GetUser.information.id..']\n\27[0;39;49m')
 max = Token:match("(%d+)")
 redis:set(max..":VERSION",GetUser.information.Source_version)
@@ -97,7 +100,7 @@ redis:set(max..":DataCenter:",GetUser.information.DataCenter)
 redis:set(max..":UserNameBot:",BOT_User)
 redis:set(max..":NameBot:",BOT_NAME)
 redis:hset(max..'username:'..GetUser.information.id,'username','@'..GetUser.information.username:gsub('_',[[\_]]))
-redis:set("max_INSTALL","Yes")
+redis:set("TH3max_INSTALL","Yes")
 info = {}
 info.username = '@'..GetUser.information.username
 info.userbot  = BOT_User
@@ -107,7 +110,7 @@ Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
 Cr_file:close() 
 print('\27[1;36m￤Token.txt is created.\27[m')
-local Text = "🙋🏼‍♂️┊اهلا عزيزي [المطور الاساسي](tg://user?id="..GetUser.information.id..") \n🔖┊شكرا لاستخدامك سورس ماكس \n📡┊أرســل  الان /start\n♦️┊لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
+local Text = "🙋🏼‍♂️¦ اهلا عزيزي [المطور الاساسي](tg://user?id="..GetUser.information.id..") \n🔖¦ شكرا لاستخدامك سورس الزعيم \n📡¦ أرســل  الان /start\n📛¦ لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
 https.request(Api_Token..'/sendMessage?chat_id='..GetUser.information.id..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
 os.execute([[
 rm -f ./README.md
@@ -124,6 +127,9 @@ function Start_Bot()
 local TokenBot = io.open('./inc/Token.txt', "r")
 if not TokenBot then
 print('\27[0;33m>>'..[[
+
+
+
 ─▄█▀█▄──▄███▄─
 ▐█░██████████▌
 ─██▒█████████─
@@ -161,6 +167,9 @@ print(tostring(io.popen("lua inc/locks.lua"):read('*all')))
 end
 
 print('\27[0;33m>>'..[[
+
+
+
 ─▄█▀█▄──▄███▄─
 ▐█░██████████▌
 ─██▒█████████─
@@ -419,15 +428,13 @@ function tdcli_update_callback(data)
 	UpdateSourceStart = false
 	EditMsg(data.message_.chat_id_,data.message_.id_,'10% - |█          |')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'20% - |███         |')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Run.lua','./inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/Run.lua','./inc/Run.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'40% - |█████       |')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/locks.lua','./inc/locks.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/locks.lua','./inc/locks.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'60% - |███████     |')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Script.lua','./inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/Script.lua','./inc/Script.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'80% - |█████████   |')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/functions.lua','./inc/functions.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/games.lua','./plugins/games.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/functions.lua','./inc/functions.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'100% - |█████████████|\n\n🔝*¦* تم تحديث السورس الى اصدار *v'..redis:get(max..":VERSION")..'*\n📟*¦* تم اعاده تشغيل السورس بنجاح')
 	dofile("./inc/Run.lua")
 	print("Update Source And Reload ~ ./inc/Run.lua")
@@ -451,17 +458,15 @@ function tdcli_update_callback(data)
 	end
 	msg.text = msg.content_.text_
 	if (msg.text=="تحديث" or msg.text=="we" or msg.text=="تحديث ♻️") and msg.sender_user_id_ == SUDO_ID then
-	return sendMsg(msg.chat_id_,msg.id_," 🗂┇تہ‏‏م تحديث آلمـلفآت \n✓",nil,function(arg,data)
+	return sendMsg(msg.chat_id_,msg.id_," 🗂¦ تہ‏‏م تحديث آلمـلفآت \n✓",nil,function(arg,data)
 	Refresh_Start = true
 	end)
 	end 
 	if msg.text== 'Update Source' and msg.sender_user_id_ == SUDO_ID then
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Run.lua','./inc/Run.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Script.lua','./inc/Script.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/functions.lua','./inc/functions.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/locks.lua','./inc/locks.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
-	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/games.lua','./plugins/games.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/Run.lua','./inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/Script.lua','./inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/functions.lua','./inc/functions.lua')
+	download_file('https://raw.githubusercontent.com/TH3BS/max/master/inc/locks.lua','./inc/locks.lua')
 	sendMsg(msg.chat_id_,msg.id_,'👷🏽| {* تــم تحديث وتثبيت السورس  *} 📡.\n\n👨🏼‍💼| { Bot is Update » }👍🏿',nil,function(arg,data)
 	dofile("./inc/Run.lua")
 	print("Reload ~ ./inc/Run.lua")
@@ -584,7 +589,7 @@ function tdcli_update_callback(data)
 	if redis:get(max..'group:add-100'..data.channel_.id_) then
 	local linkGroup = (redis:get(max..'linkGroup-100'..data.channel_.id_) or "")
 	local NameGroup = (redis:get(max..'group:name-100'..data.channel_.id_) or "")
-	send_msg(SUDO_ID,"📛┇قام شخص بطرد البوت من المجموعه الاتيه : \n🏷┇ألايدي : `-100"..data.channel_.id_.."`\n🗯┇الـمجموعه : "..Flter_Markdown(NameGroup).."\n\n📮┇تـم مسح كل بيانات المجموعه بنـجاح ")
+	send_msg(SUDO_ID,"📛| قام شخص بطرد البوت من المجموعه الاتيه : \n🏷| ألايدي : `-100"..data.channel_.id_.."`\n🗯| الـمجموعه : "..Flter_Markdown(NameGroup).."\n\n📮| تـم مسح كل بيانات المجموعه بنـجاح ")
 	rem_data_group('-100'..data.channel_.id_)
 	end
 	end
