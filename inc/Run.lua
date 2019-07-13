@@ -97,7 +97,7 @@ redis:set(max..":DataCenter:",GetUser.information.DataCenter)
 redis:set(max..":UserNameBot:",BOT_User)
 redis:set(max..":NameBot:",BOT_NAME)
 redis:hset(max..'username:'..GetUser.information.id,'username','@'..GetUser.information.username:gsub('_',[[\_]]))
-redis:set("TH3max_INSTALL","Yes")
+redis:set("max_INSTALL","Yes")
 info = {}
 info.username = '@'..GetUser.information.username
 info.userbot  = BOT_User
