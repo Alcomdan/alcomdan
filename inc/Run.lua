@@ -250,7 +250,7 @@ msg.GroupActive = false
 end
 
 if msg.sender_user_id_ == SUDO_ID then 
-msg.TheRankCmd = 'المطور الاساسي 👨🏻‍✈️' 
+msg.TheRankCmd = 'المطور 👨🏻‍✈️' 
 msg.TheRank = 'مطور اساسي 👨🏻‍✈️' 
 msg.Rank = 1
 elseif redis:sismember(max..':SUDO_BOT:',msg.sender_user_id_) then 
@@ -258,28 +258,24 @@ msg.TheRankCmd = 'المطور 👨🏽‍💻'
 msg.TheRank = 'مطور البوت 👨🏽‍💻'
 msg.Rank = 2
 elseif msg.GroupActive and redis:sismember(max..':MONSHA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'المنشئ 👷🏻‍♂'
-msg.TheRank = 'المنشئ 👷🏻‍♂'
+msg.TheRankCmd = 'المنشىء 👷🏽'
+msg.TheRank = 'المنشىء 👷🏽'
 msg.Rank = 3
 elseif msg.GroupActive and redis:sismember(max..'owners:'..msg.chat_id_,msg.sender_user_id_) then 
 msg.TheRankCmd = 'المدير 👨🏼‍⚕️' 
-msg.TheRank = 'مدير البوت' 
+msg.TheRank = 'مدير البوت 👨🏼‍⚕️' 
 msg.Rank = 4
 elseif msg.GroupActive and redis:sismember(max..'admins:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'الأدمن 👨🏼‍🎓'
+msg.TheRankCmd = 'الادمن 👨🏼‍🎓'
 msg.TheRank = 'ادمن في البوت 👨🏼‍🎓'
 msg.Rank = 5
-elseif msg.GroupActive and redis:sismember(max..'hassan:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'المنشئ الاساسي 👨🏻‍🔧'
-msg.TheRank = 'منشى اساسي 👨🏻‍🔧'
-msg.Rank = 6
 elseif msg.GroupActive and redis:sismember(max..'whitelist:'..msg.chat_id_,msg.sender_user_id_) then 
 msg.TheRank = 'عضو مميز ⭐️'
-msg.Rank = 8
+msg.Rank = 6
 elseif msg.sender_user_id_ == our_id then
 msg.Rank = 7
 else
-msg.TheRank = 'فقط عضو 🙍🏻‍♂'
+msg.TheRank = 'فقط عضو 🙍🏼‍♂️'
 msg.Rank = 10 
 end
  
@@ -291,23 +287,19 @@ if msg.Rank == 1 or msg.Rank == 2 then
 msg.SudoUser = true
 end
 
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 6 then
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 then
 msg.Creator = true
 end
 
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 6 then
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 then
 msg.Director = true
 end
 
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 or msg.Rank == 6 then
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 then
 msg.Admin = true
 end
 
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 6 then
-msg.Special = true
-end
-
-if msg.Rank == 8 then
+if msg.Rank == 6 then
 msg.Special = true
 end
 
@@ -436,7 +428,7 @@ function tdcli_update_callback(data)
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/functions.lua','./inc/functions.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/games.lua','./plugins/games.lua')
-	EditMsg(data.message_.chat_id_,data.message_.id_,'100% - |█████████████|\n\n📟*┊*تم تحديث سورس ماكس الى اخر اصدار بنجاح')
+	EditMsg(data.message_.chat_id_,data.message_.id_,'100% - |█████████████|\n\n🔝*¦* تم تحديث السورس الى اصدار *v'..redis:get(max..":VERSION")..'*\n📟*¦* تم اعاده تشغيل السورس بنجاح')
 	dofile("./inc/Run.lua")
 	print("Update Source And Reload ~ ./inc/Run.lua")
 	end
@@ -459,24 +451,24 @@ function tdcli_update_callback(data)
 	end
 	msg.text = msg.content_.text_
 	if (msg.text=="تحديث" or msg.text=="we" or msg.text=="تحديث ♻️") and msg.sender_user_id_ == SUDO_ID then
-	return sendMsg(msg.chat_id_,msg.id_," 🗂┊تہ‏‏م تحديث آلمـلفآت \n✓",nil,function(arg,data)
+	return sendMsg(msg.chat_id_,msg.id_," 🗂┇تہ‏‏م تحديث آلمـلفآت \n✓",nil,function(arg,data)
 	Refresh_Start = true
 	end)
 	end 
-	if msg.text== 'Update Source max' and msg.sender_user_id_ == SUDO_ID then
+	if msg.text== 'Update Source' and msg.sender_user_id_ == SUDO_ID then
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Run.lua','./inc/Run.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/Script.lua','./inc/Script.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/functions.lua','./inc/functions.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/inc/locks.lua','./inc/locks.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
 	download_file('https://raw.githubusercontent.com/MAXTELE/MAX/master/plugins/games.lua','./plugins/games.lua')
-	sendMsg(msg.chat_id_,msg.id_,'👷🏽┊❴ *تــم تحديث وتثبيت سورس ماكس بنجاح* ❵📡\n\n👨🏼‍💼┊❴ Fully updated source ❵ ꪜ',nil,function(arg,data)
+	sendMsg(msg.chat_id_,msg.id_,'👷🏽| {* تــم تحديث وتثبيت السورس  *} 📡.\n\n👨🏼‍💼| { Bot is Update » }👍🏿',nil,function(arg,data)
 	dofile("./inc/Run.lua")
 	print("Reload ~ ./inc/Run.lua")
 	end) 
 	end
-	if msg.text== 'Restart' and msg.sender_user_id_ == SUDO_ID then
-	sendMsg(msg.chat_id_,msg.id_,'👷🏽┊❴ *تــم أعـاده تشغيل البوت* ❵\n\n👨🏼‍💼┊❴ Bot is Reloaded ❵ ꪜ',nil,function(arg,data)
+	if msg.text== 'reload' and msg.sender_user_id_ == SUDO_ID then
+	sendMsg(msg.chat_id_,msg.id_,'👷🏽| {* تــم أعـاده تشغيل البوت  *} 📡.\n\n👨🏼‍💼| { Bot is Reloaded » }👍🏿',nil,function(arg,data)
 	dofile("./inc/Run.lua")
 	print("Reload ~ ./inc/Run.lua")
 	end)
@@ -592,7 +584,7 @@ function tdcli_update_callback(data)
 	if redis:get(max..'group:add-100'..data.channel_.id_) then
 	local linkGroup = (redis:get(max..'linkGroup-100'..data.channel_.id_) or "")
 	local NameGroup = (redis:get(max..'group:name-100'..data.channel_.id_) or "")
-	send_msg(SUDO_ID,"🍃┊اهلا عزيزي المطور \nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n📛┊لقد تم طردي من مجموعه جديده \n🔖┊معلومات المجموعه \n🎟┊ايدي المجموعه : -100"..data.channel_.id_.."\n💭┊أسم المجموعه : "..Flter_Markdown(NameGroup).."\n\n📊┊تـم مسح كل بيانات المجموعه بنـجاح ")
+	send_msg(SUDO_ID,"📛┇قام شخص بطرد البوت من المجموعه الاتيه : \n🏷┇ألايدي : `-100"..data.channel_.id_.."`\n🗯┇الـمجموعه : "..Flter_Markdown(NameGroup).."\n\n📮┇تـم مسح كل بيانات المجموعه بنـجاح ")
 	rem_data_group('-100'..data.channel_.id_)
 	end
 	end
