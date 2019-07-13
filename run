@@ -6,7 +6,7 @@
 #      ▇▇          ▇ @hlh313   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇
 #      ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @hlh313
 #      ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @hlh_313  ▇▄                 ▇▇                 ▇▇
-#      ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source max BY @hlh_313
+#      ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source TH3max BY @hlh_313
 #---------------------------------------------------------------------
 cd $(cd $(dirname $0); pwd)
  
@@ -27,11 +27,11 @@ echo -e "${GREEN}
 ▇▇          ▇ @hlh313   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇
 ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @hlh313
 ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @hlh_313  ▇▄                 ▇▇                 ▇▇
-▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source max BY @hlh_313
+▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source TH3max BY @hlh_313
 ----------------------------------------------------------------------${CNIL}"
 echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
 ${CNIL}";
-echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source max 
+echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source Th3max 
 ${CNIL}";
 exit;
 fi
@@ -41,7 +41,7 @@ if [ ! -f "./TG" ]; then
 echo -e "${RED}
 ¦
 ¦ CAUTION:${WHITB} Your Not Dwonload TG .
-¦ NOW I Run File ${Yellow}./run${WHITB} To install ${SMAY}Source max${CNIL} . \n
+¦ NOW I Run File ${Yellow}./run${WHITB} To install ${SMAY}Source TH3max${CNIL} . \n
 \n\n"
 chmod +x ./ins
 ./ins

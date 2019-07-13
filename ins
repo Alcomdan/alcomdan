@@ -33,7 +33,7 @@ echo -e " ----------------------------------------------------------------------
 echo -e "${CNIL}"
 echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
 ${CNIL}";
-echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source max 
+echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source Th3max 
 ${CNIL}";
 exit;
 fi
@@ -53,7 +53,7 @@ memory_free=`awk '/^Mem/ {print $4}' <(free -m)`
 if [ "$memory_free" -le 60 ]; then
 echo -e "${RED}¦
 ¦ CAUTION:${WHITEC} Your RAM size is less than 60MB.
-¦ NOW you can not install the SOURCE max. \n
+¦ NOW you can not install the SOURCE TH3max. \n
 ¦${WHITB}¦ YOUR RAM FREE SIZE IS : ${SMAY}${memory_free}MB${CNIL}"
 exit ;
 fi
@@ -64,11 +64,11 @@ if [ "${PKG_OK}" == "installed" ]; then
 if [ "$1" == "-R" ] ; then
 GET_INSTALL="NO"
 else
-GET_INSTALL=$(redis-cli get max_INSTALL)
+GET_INSTALL=$(redis-cli get TH3max_INSTALL)
 fi
 if [ "${GET_INSTALL}" == "Yes" ]; then
 echo -e "
-${SMAY}>> ${LSAMAY}Source max${SMAY} is Already Installed ^_^ .\n${CNIL}"
+${SMAY}>> ${LSAMAY}Source TH3max${SMAY} is Already Installed ^_^ .\n${CNIL}"
 sudo luarocks install luautf8
 sudo chmod +x ./run
 sudo chmod +x ./TG
@@ -128,7 +128,7 @@ sudo chmod +x TG
 sudo chmod +x run
 sudo chmod +x ./run
 echo -e "\n
-${SMAY}>> Installation ${LSAMAY}Source max${SMAY} Completed ^_^ .\n
+${SMAY}>> Installation ${LSAMAY}Source TH3max${SMAY} Completed ^_^ .\n
 Now I Have Information For Your Bot  \n
 1- Enter Token Your Bot .
 2- Enter Your UserName Sudo .
