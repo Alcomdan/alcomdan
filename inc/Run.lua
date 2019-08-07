@@ -49,8 +49,8 @@ if Token == '' then
 print('\n\27[1;31m￤ You Did not Enter TOKEN !\n￤ عذرآ لم تقوم بآدخآل آي شـيء , آدخل توگن آلبوت آلآن ')
 create_config()
 end
-Token = 'https://telegram.org/bot'..Token
-local url , res = https.request(_Token..'/getMe')
+ApiToken = 'https://api.telegram.org/bot'..Token
+local url , res = https.request(ApiToken..'/getMe')
 if res ~= 200 then
 print('\n\27[1;31m￤ Your Token is Incorrect Please Check it!\n￤ آلتوگن آلذي آدخلتهہ‏‏ غير صـحيح , تآگد مـنهہ‏‏ ثم حآول مـجددآ!')
 create_config()
@@ -70,7 +70,7 @@ if not SUDO_USER:match('@[%a%d_]') then
 print('\n\27[1;31m￤ This is Not USERNAME !\n￤هہ‏‏ذآ ليس مـعرف حسـآب تلگرآم , عذرآ آدخل آلمـعرف آلصـحيح آلآن . ')
 create_config(Token)
 end 
-local url , res = https.request('https://th3bs.com/GetUser/?User='..SUDO_USER)
+local url , res = https.request('https://api.th3bs.com/GetUser/?User='..SUDO_USER)
 
 if res ~= 200 then
 print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
@@ -97,7 +97,7 @@ redis:set(max..":DataCenter:",GetUser.information.DataCenter)
 redis:set(max..":UserNameBot:",BOT_User)
 redis:set(max..":NameBot:",BOT_NAME)
 redis:hset(max..'username:'..GetUser.information.id,'username','@'..GetUser.information.username:gsub('_',[[\_]]))
-redis:set("max_INSTALL","Yes")
+redis:set("TH3max_INSTALL","Yes")
 info = {}
 info.username = '@'..GetUser.information.username
 info.userbot  = BOT_User
@@ -108,7 +108,7 @@ Cr_file:write(Token)
 Cr_file:close() 
 print('\27[1;36m￤Token.txt is created.\27[m')
 local Text = "🙋🏼‍♂️┊اهلا عزيزي [المطور الاساسي](tg://user?id="..GetUser.information.id..") \n🔖┊شكرا لاستخدامك سورس ماكس \n📡┊أرســل  الان /start\n♦️┊لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
-https.request(Token..'/sendMessage?chat_id='..GetUser.information.id..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
+https.request(ApiToken..'/sendMessage?chat_id='..GetUser.information.id..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
 os.execute([[
 rm -f ./README.md
 rm -rf ./.git
@@ -141,7 +141,7 @@ File = {}
 local login = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 max = Token:match("(%d+)")
 our_id = tonumber(max)
-Token = "https://telegram.org/bot"..Token
+ApiToken = "https://api.telegram.org/bot"..Token
 Bot_User = redis:get(max..":UserNameBot:")
 SUDO_ID = tonumber(redis:get(max..":SUDO_ID:"))
 SUDO_USER = redis:hgetall(max..'username:'..SUDO_ID).username
