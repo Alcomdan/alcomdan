@@ -68,7 +68,18 @@ create_config(Token)
 end 
 if not SUDO_USER:match('@[%a%d_]') then
 print('\n\27[1;31m￤ This is Not USERNAME !\n￤هہ‏‏ذآ ليس مـعرف حسـآب تلگرآم , عذرآ آدخل آلمـعرف آلصـحيح آلآن . ')
-create_config(Token) 
+create_config(Token)
+end 
+local url , res = https.request('https://api.th3bs.com/GetUser/?User='..SUDO_USER)
+
+if res ~= 200 then
+print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
+create_config(Token)
+end
+success, GetUser = pcall(JSON.decode, url)
+if not success then
+print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث مشـگلهہ‌‏ في سـگربت آلآسـتخرآج , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
+create_config(Token)
 end
 if not GetUser.result then
 if GetUser.cause then
