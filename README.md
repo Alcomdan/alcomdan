@@ -17,7 +17,7 @@
 
 ⚜┇انسخ رابط كيثاب السورس  ↡
 
-`git clone https://github.com/MAXTELE/MAX.git ;cd MAX;chmod +x ins;./ins`
+`git clone https://github.com/alcomdan/HAM.git ;cd NMAH;chmod +x ins;./ins`
 
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
