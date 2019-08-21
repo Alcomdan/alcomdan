@@ -41,11 +41,11 @@ git clone https://github.com/Alcomdan/alcomdan.git ;cd alcomdan;chmod +x ins;./i
 
 💭┇كود رن السورس 
 
-`./HAM/run`
+`./alcomdan/run`
 
 💭┇كود حذف السورس 
 
-`rm -fr ./NMAH`
+`rm -fr ./alcomdan`
 
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
