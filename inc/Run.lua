@@ -231,7 +231,6 @@ end
 	
 if msg.reply_to_message_id_ ~= 0 then msg.reply_id = msg.reply_to_message_id_ end
 msg.type = GetType(msg.chat_id_)
-
 if msg.type == "pv" and redis:get(max..':mute_pv:'..msg.chat_id_) then
 print('\27[1;31m is_MUTE_BY_FLOOD\27[0m')
 return false 
